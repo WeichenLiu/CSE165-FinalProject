@@ -36,12 +36,14 @@ public class MotionController : MonoBehaviour {
 	void Update () {
 		
 		OVRInput.Update ();
-		if (OVRInput.Get (OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch)>0.0001f) {
+		if (OVRInput.Get (OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch)>0.01f) {
 			Debug.Log ("triggered");
 			if (!triggered) {
 				pivotCoord = rightHand.transform.position;
-				//pivotRot = rightHand.transform.localPosition;
-				triggered = true;
+			    GetComponentInChildren<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+			    GetComponentInChildren<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
+                //pivotRot = rightHand.transform.localPosition;
+                triggered = true;
 			} else {
 				velocity = pivotCoord - rightHand.transform.position;
 				angleVelocity = Quaternion.Inverse(Quaternion.Euler(pivotRot)) * Quaternion.Euler(rightHand.transform.localPosition.normalized);
