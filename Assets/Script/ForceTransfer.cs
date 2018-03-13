@@ -39,7 +39,7 @@ public class ForceTransfer : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void FixedUpdate ()
+	void Update ()
 	{
 	    lastPos = this.transform.position;
 	}
