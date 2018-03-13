@@ -41,33 +41,35 @@ public class TestSteamVr : MonoBehaviour {
         velocity = new Vector3();
         angleVelocity = Quaternion.identity;
         pivotRot = rightHand.transform.localPosition.normalized;
-        GetComponentInChildren<Rigidbody>().centerOfMass = new Vector3(0f, 0.0f, 0f);
+        player.GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0.0f, 0f);
+        player.GetComponent<Rigidbody>().maxAngularVelocity = 0.7f;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        GetComponentInChildren<Rigidbody>().centerOfMass = new Vector3(0f, 0f, 0f);
+
+        player.GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0f, 0f);
         //Debug.Log("center mass:" + player.GetComponent<Rigidbody>().centerOfMass);
         // Debug.Log("vel:" + player.GetComponent<Rigidbody>().velocity);
         if (Input.GetAxis("SteamVRRightTrigger") > 0.31f)
         {
-            Debug.Log("triggered");
+            //Debug.Log("triggered");
             if (!triggered)
             {
 
                 pivotCoord = rightHand.transform.position;
-                GetComponentInChildren<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-                GetComponentInChildren<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
-                GetComponentInChildren<Rigidbody>().ResetInertiaTensor();
-                GetComponentInChildren<Rigidbody>().isKinematic = true;
+                player.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+                player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
+                player.GetComponent<Rigidbody>().ResetInertiaTensor();
+                player.GetComponent<Rigidbody>().isKinematic = true;
                 //pivotRot = rightHand.transform.localPosition;
                 triggered = true;
                 fired = false;
             }
             else
             {
-                GetComponentInChildren<Rigidbody>().isKinematic = false;
+                player.GetComponentInChildren<Rigidbody>().isKinematic = false;
                 velocity = pivotCoord - rightHand.transform.position;
                 
                 angleVelocity = Quaternion.Inverse(Quaternion.Euler(pivotRot)) * Quaternion.Euler(rightHand.transform.localPosition.normalized);
@@ -78,6 +80,9 @@ public class TestSteamVr : MonoBehaviour {
                 Vector3 force = player.GetComponent<Rigidbody>().mass * a;
                 //Debug.Log(angleVelocity.eulerAngles);
                 //player.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
+                player.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+                player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
+                player.GetComponent<Rigidbody>().ResetInertiaTensor();
                 player.GetComponent<Rigidbody>().MovePosition(player.transform.position + velocity);
                 //player.transform.position += velocity;
                 //player.transform.rotation *= angleVelocity;

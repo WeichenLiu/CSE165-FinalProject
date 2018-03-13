@@ -21,7 +21,7 @@ public class TestSelect : MonoBehaviour
     }
 	
 	// Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         //Debug.Log(Input.GetAxis("SteamVRRightGrip"));
         if (Input.GetAxis("SteamVRRightGrip") > 0.5001f)
@@ -31,12 +31,12 @@ public class TestSelect : MonoBehaviour
                 light.SetActive(true);
                 RaycastHit hitInfo;
                 bool hit = Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
-                    0.1f);
+                    10.1f);
                 Debug.DrawLine(rightHand.transform.position,
                     rightHand.transform.position + rightHand.transform.forward * 0.1f);
                 if (hit)
                 {
-                    
+
                     if (hitInfo.collider.tag != "Scene")
                     {
                         if (hitInfo.rigidbody.mass < self.mass / 15.0f)
@@ -46,9 +46,11 @@ public class TestSelect : MonoBehaviour
                             attachedObj.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
                             attachedObj.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
                             attachedObj.GetComponent<Rigidbody>().ResetInertiaTensor();
-                            attachedObj.GetComponent<Rigidbody>().isKinematic = true;
+                            //attachedObj.GetComponent<Rigidbody>().isKinematic = true;
+                            attachedObj.GetComponent<ForceTransfer>().grabbed = true;
+                            attachedObj.GetComponent<ForceTransfer>().root = self;
                             Vector3 boundSize = attachedObj.GetComponent<Collider>().bounds.size;
-                            objSize = Mathf.Max(Mathf.Max(boundSize.x, boundSize.y),boundSize.z);
+                            objSize = Mathf.Max(Mathf.Max(boundSize.x, boundSize.y), boundSize.z);
                             //Debug.Log("attached: " + hitInfo.collider.name);
                             fired = false;
                         }
@@ -58,38 +60,48 @@ public class TestSelect : MonoBehaviour
             else
             {
                 lastPos = attachedObj.transform.position;
-                attachedObj.GetComponentInChildren<Rigidbody>().isKinematic = false;
+                
                 //
 
                 //player.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
-                
-                attachedObj.GetComponent<Rigidbody>().MovePosition(rightHand.transform.position + rightHand.transform.forward * (objSize/2.0f + 0.2f));
+                attachedObj.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
+                attachedObj.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
+                attachedObj.GetComponent<Rigidbody>().ResetInertiaTensor();
+                attachedObj.GetComponent<Rigidbody>()
+                    .MovePosition(rightHand.transform.position + rightHand.transform.forward * (objSize / 2.0f + 0.3f));
                 attachedObj.GetComponent<Rigidbody>().MoveRotation(Quaternion.Euler(rightHand.transform.forward));
 
-                velocity = rightHand.transform.position + rightHand.transform.forward * (objSize / 2.0f + 0.2f) - lastPos;
-                Debug.Log(velocity);
+                velocity = rightHand.transform.position + rightHand.transform.forward * (objSize / 2.0f + 0.3f) -
+                           lastPos;
+                //Debug.Log(velocity);
             }
         }
         else
         {
             light.SetActive(false);
-            attached = false;
-            if (!fired)
+            if (attached)
             {
-                //velocity = transform.position - lastCoord;
-                if (velocity.magnitude >= 0.00001f)
-                {
-                    //player.transform.position += velocity;
-                    RaycastHit hitInfo;
-                    Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
-                        0.2f);
-                    attachedObj.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.fixedDeltaTime, hitInfo.point, ForceMode.VelocityChange);
-                    //velocity *= vFalloff;
-                }
-                fired = true;
+                attached = false;
+                attachedObj.GetComponent<ForceTransfer>().grabbed = false;
+                attachedObj.GetComponent<Collider>().isTrigger = false;
+                //attachedObj.GetComponent<Rigidbody>().isKinematic = false;
             }
-            
-        }
+            if (!fired)
+                {
+                    //velocity = transform.position - lastCoord;
+                    if (velocity.magnitude >= 0.00001f)
+                    {
+                        //player.transform.position += velocity;
+                        RaycastHit hitInfo;
+                        Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
+                            0.2f);
+                        attachedObj.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, hitInfo.point, ForceMode.VelocityChange);
+                        //velocity *= vFalloff;
+                    }
+                    fired = true;
+                }
+                
+            }
 
     }
 
