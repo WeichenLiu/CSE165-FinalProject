@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandCollisionController : MonoBehaviour {
-
+public class HandCollisionController : MonoBehaviour
+{
     public Rigidbody parentRigid;
     public GameObject leftHand;
     public GameObject rightHand;
@@ -17,20 +17,13 @@ public class HandCollisionController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+        
     }
 
     void OnCollisionEnter(Collision c)
     {
+        
 
-        //Debug.Log(c.rigidbody.isKinematic);
-        if (c.gameObject.GetComponent<ForceTransfer>() && c.gameObject.GetComponent<ForceTransfer>().grabbed == true)
-        {
-            last = c.collider;
-            last.isTrigger = true;
-            last.gameObject.GetComponent<MeshRenderer>().material = b;
-            return;
-        }
         float selfMass = parentRigid.mass;
         float targetMass = c.rigidbody.mass;
         Vector3 vDir = (transform.position - c.transform.position).normalized;
@@ -56,6 +49,7 @@ public class HandCollisionController : MonoBehaviour {
         {
             return;
         }
+
         contact = parentRigid.position + (contact - parentRigid.position).normalized;
         if (selfMass > targetMass)
         {
@@ -66,28 +60,11 @@ public class HandCollisionController : MonoBehaviour {
         {
             parentRigid.AddForceAtPosition((-1.0f) * vel0 * targetMass / selfMass, contact, ForceMode.VelocityChange);
         }
+
         //c.rigidbody.AddTorque(vel0/=10.0f, ForceMode.Impulse);
         //Debug.Log(c.relativeVelocity);
     }
 
-    void OnTriggerExit(Collider c)
-    {
-        StartCoroutine(ExecuteAfterTime(1.0f, c));
-
-    }
-
-    IEnumerator ExecuteAfterTime(float time, Collider c)
-    {
-        yield return new WaitForSeconds(time);
-
-        if (c && c == last)
-        {
-            c.gameObject.GetComponent<MeshRenderer>().material = w;
-            c.isTrigger = false;
-            last = null;
-        }
-        // Code to execute after the delay
-    }
 
     // Update is called once per frame
     void Update()

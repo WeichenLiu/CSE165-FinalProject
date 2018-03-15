@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TestSelect : MonoBehaviour
+public class SelectionController : MonoBehaviour
 {
     public Rigidbody self;
     public GameObject rightHand;
@@ -11,20 +11,22 @@ public class TestSelect : MonoBehaviour
     public Vector3 velocity;
     public Vector3 lastPos;
     public float objSize = 0;
-    
+
     public bool attached = false;
 
     private bool fired = true;
+
     // Use this for initialization
-    void Start ()
+    void Start()
     {
     }
-	
-	// Update is called once per frame
-    void FixedUpdate()
+
+    // Update is called once per frame
+    void Update()
     {
         //Debug.Log(Input.GetAxis("SteamVRRightGrip"));
-        if (Input.GetAxis("SteamVRRightGrip") > 0.5001f)
+        OVRInput.Update();
+        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0.11f)
         {
             if (!attached)
             {
@@ -36,8 +38,7 @@ public class TestSelect : MonoBehaviour
                     rightHand.transform.position + rightHand.transform.forward * 0.1f);
                 if (hit)
                 {
-
-                    if (hitInfo.collider.tag != "Scene")
+                    if (hitInfo.collider.tag == "Pick")
                     {
                         if (hitInfo.rigidbody.mass < self.mass / 15.0f)
                         {
@@ -47,8 +48,8 @@ public class TestSelect : MonoBehaviour
                             attachedObj.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
                             attachedObj.GetComponent<Rigidbody>().ResetInertiaTensor();
                             //attachedObj.GetComponent<Rigidbody>().isKinematic = true;
-                            attachedObj.GetComponent<ForceTransfer>().grabbed = true;
-                            attachedObj.GetComponent<ForceTransfer>().root = self;
+                            attachedObj.GetComponent<Grabbable>().grabbed = true;
+                            attachedObj.GetComponent<Grabbable>().root = self;
                             Vector3 boundSize = attachedObj.GetComponent<Collider>().bounds.size;
                             objSize = Mathf.Max(Mathf.Max(boundSize.x, boundSize.y), boundSize.z);
                             //Debug.Log("attached: " + hitInfo.collider.name);
@@ -60,7 +61,7 @@ public class TestSelect : MonoBehaviour
             else
             {
                 lastPos = attachedObj.transform.position;
-                
+
                 //
 
                 //player.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
@@ -82,28 +83,27 @@ public class TestSelect : MonoBehaviour
             if (attached)
             {
                 attached = false;
-                attachedObj.GetComponent<ForceTransfer>().grabbed = false;
+                attachedObj.GetComponent<Grabbable>().grabbed = false;
                 attachedObj.GetComponent<Collider>().isTrigger = false;
                 //attachedObj.GetComponent<Rigidbody>().isKinematic = false;
             }
+
             if (!fired)
+            {
+                //velocity = transform.position - lastCoord;
+                if (velocity.magnitude >= 0.00001f)
                 {
-                    //velocity = transform.position - lastCoord;
-                    if (velocity.magnitude >= 0.00001f)
-                    {
-                        //player.transform.position += velocity;
-                        RaycastHit hitInfo;
-                        Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
-                            0.2f);
-                        attachedObj.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, hitInfo.point, ForceMode.VelocityChange);
-                        //velocity *= vFalloff;
-                    }
-                    fired = true;
+                    //player.transform.position += velocity;
+                    RaycastHit hitInfo;
+                    Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
+                        0.2f);
+                    attachedObj.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, hitInfo.point,
+                        ForceMode.VelocityChange);
+                    //velocity *= vFalloff;
                 }
-                
+
+                fired = true;
             }
-
+        }
     }
-
-
 }
