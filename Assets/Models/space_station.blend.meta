@@ -14,6 +14,40 @@ ModelImporter:
     100012: Shelf
     100014: //RootNode
     100016: Structure
+    100018: Book_1
+    100020: Book_2
+    100022: Book_3
+    100024: Book_4
+    100026: Book_5
+    100028: Book_6
+    100030: Book_6_001
+    100032: Cabins_0
+    100034: Cabins_1
+    100036: Cabins_2
+    100038: Computer_Cabel
+    100040: Computer_Control
+    100042: Cup
+    100044: Display_Main
+    100046: Door_Cabel
+    100048: Door_Down
+    100050: Door_Up
+    100052: Electricity_Cover
+    100054: Electricity_Cover_001
+    100056: Electricity_Cover_002
+    100058: Electricity_Cover_003
+    100060: Electricity_Lock
+    100062: Electricity_Lock_001
+    100064: Electricity_Lock_002
+    100066: Electricity_Lock_003
+    100068: Electricity_Machine
+    100070: Handle
+    100072: Light
+    100074: Misc_2
+    100076: Out_Door_Down
+    100078: Out_Door_Up
+    100080: Photo_Frame
+    100082: Pillow
+    100084: Window
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -23,6 +57,40 @@ ModelImporter:
     400012: Shelf
     400014: //RootNode
     400016: Structure
+    400018: Book_1
+    400020: Book_2
+    400022: Book_3
+    400024: Book_4
+    400026: Book_5
+    400028: Book_6
+    400030: Book_6_001
+    400032: Cabins_0
+    400034: Cabins_1
+    400036: Cabins_2
+    400038: Computer_Cabel
+    400040: Computer_Control
+    400042: Cup
+    400044: Display_Main
+    400046: Door_Cabel
+    400048: Door_Down
+    400050: Door_Up
+    400052: Electricity_Cover
+    400054: Electricity_Cover_001
+    400056: Electricity_Cover_002
+    400058: Electricity_Cover_003
+    400060: Electricity_Lock
+    400062: Electricity_Lock_001
+    400064: Electricity_Lock_002
+    400066: Electricity_Lock_003
+    400068: Electricity_Machine
+    400070: Handle
+    400072: Light
+    400074: Misc_2
+    400076: Out_Door_Down
+    400078: Out_Door_Up
+    400080: Photo_Frame
+    400082: Pillow
+    400084: Window
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -31,6 +99,40 @@ ModelImporter:
     2300010: Desk
     2300012: Shelf
     2300014: Structure
+    2300016: Book_1
+    2300018: Book_2
+    2300020: Book_3
+    2300022: Book_4
+    2300024: Book_5
+    2300026: Book_6
+    2300028: Book_6_001
+    2300030: Cabins_0
+    2300032: Cabins_1
+    2300034: Cabins_2
+    2300036: Computer_Cabel
+    2300038: Computer_Control
+    2300040: Cup
+    2300042: Display_Main
+    2300044: Door_Cabel
+    2300046: Door_Down
+    2300048: Door_Up
+    2300050: Electricity_Cover
+    2300052: Electricity_Cover_001
+    2300054: Electricity_Cover_002
+    2300056: Electricity_Cover_003
+    2300058: Electricity_Lock
+    2300060: Electricity_Lock_001
+    2300062: Electricity_Lock_002
+    2300064: Electricity_Lock_003
+    2300066: Electricity_Machine
+    2300068: Handle
+    2300070: Light
+    2300072: Misc_2
+    2300074: Out_Door_Down
+    2300076: Out_Door_Up
+    2300078: Photo_Frame
+    2300080: Pillow
+    2300082: Window
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -39,6 +141,40 @@ ModelImporter:
     3300010: Desk
     3300012: Shelf
     3300014: Structure
+    3300016: Book_1
+    3300018: Book_2
+    3300020: Book_3
+    3300022: Book_4
+    3300024: Book_5
+    3300026: Book_6
+    3300028: Book_6_001
+    3300030: Cabins_0
+    3300032: Cabins_1
+    3300034: Cabins_2
+    3300036: Computer_Cabel
+    3300038: Computer_Control
+    3300040: Cup
+    3300042: Display_Main
+    3300044: Door_Cabel
+    3300046: Door_Down
+    3300048: Door_Up
+    3300050: Electricity_Cover
+    3300052: Electricity_Cover_001
+    3300054: Electricity_Cover_002
+    3300056: Electricity_Cover_003
+    3300058: Electricity_Lock
+    3300060: Electricity_Lock_001
+    3300062: Electricity_Lock_002
+    3300064: Electricity_Lock_003
+    3300066: Electricity_Machine
+    3300068: Handle
+    3300070: Light
+    3300072: Misc_2
+    3300074: Out_Door_Down
+    3300076: Out_Door_Up
+    3300078: Photo_Frame
+    3300080: Pillow
+    3300082: Window
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -47,6 +183,40 @@ ModelImporter:
     4300010: Shelf
     4300012: Bed
     4300014: Structure
+    4300016: Window
+    4300018: Handle
+    4300020: Electricity_Machine
+    4300022: Electricity_Lock
+    4300024: Electricity_Cover
+    4300026: Door_Up
+    4300028: Pillow
+    4300030: Book_3
+    4300032: Book_2
+    4300034: Book_1
+    4300036: Photo_Frame
+    4300038: Cup
+    4300040: Light
+    4300042: Display_Main
+    4300044: Computer_Control
+    4300046: Door_Down
+    4300048: Door_Cabel
+    4300050: Computer_Cabel
+    4300052: Cabins_2
+    4300054: Cabins_1
+    4300056: Cabins_0
+    4300058: Misc_2
+    4300060: Book_4
+    4300062: Book_5
+    4300064: Book_6
+    4300066: Book_6_001
+    4300068: Out_Door_Down
+    4300070: Out_Door_Up
+    4300072: Electricity_Cover_001
+    4300074: Electricity_Lock_001
+    4300076: Electricity_Cover_002
+    4300078: Electricity_Lock_002
+    4300080: Electricity_Cover_003
+    4300082: Electricity_Lock_003
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -55,6 +225,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material
     second: {fileID: 2100000, guid: f341acd382b0db74982d3d37aa4f250a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_001
+    second: {fileID: 2100000, guid: a98ef86cdac4a5442b60d9269c723f55, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
