@@ -9,6 +9,7 @@ public class MotionController : MonoBehaviour
     public GameObject leftHand;
     public GameObject rightHand;
     public GameObject player;
+    public GameObject body;
 
     public Vector3 velocity;
     public Vector3 lastVel;
@@ -36,6 +37,25 @@ public class MotionController : MonoBehaviour
         angleVelocity = Quaternion.identity;
         player.GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0.0f, 0f);
         player.GetComponent<Rigidbody>().maxAngularVelocity = 0.7f;
+    }
+
+    void updateContainer()
+    {
+        int count = player.transform.childCount;
+        List<Transform> children = new List<Transform>();
+        for (int i = 0; i < count; i++)
+        {
+             Transform child = player.transform.GetChild(i);
+             children.Add(child);
+        }
+        player.transform.DetachChildren();
+        player.transform.position = body.transform.position;
+        player.transform.rotation = body.transform.rotation;
+        for (int i = 0; i < children.Count; i++)
+        {
+            Transform child = children[i];
+            child.parent = player.transform;
+        }
     }
 
 
@@ -108,9 +128,8 @@ public class MotionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        updateContainer();
         player.GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0f, 0f);
-        //Debug.Log("center mass:" + player.GetComponent<Rigidbody>().centerOfMass);
-        // Debug.Log("vel:" + player.GetComponent<Rigidbody>().velocity);
         OVRInput.Update();
         if ((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
             || (handIndex == 1 &&
@@ -127,9 +146,7 @@ public class MotionController : MonoBehaviour
                 {
                     velocity = pivotCoord - rightHand.transform.position;
                 }
-
-                //Debug.Log(angleVelocity.eulerAngles);
-                //player.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
+                
                 player.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
                 player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
                 player.GetComponent<Rigidbody>().ResetInertiaTensor();
@@ -153,13 +170,12 @@ public class MotionController : MonoBehaviour
                 {
                     //player.transform.position += velocity;
                     angleVelocity = (Quaternion.Inverse(lastRot) * player.transform.rotation);
-                    player.GetComponent<Rigidbody>().AddForce(velocity / Time.deltaTime, ForceMode.VelocityChange);
+                    player.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, pivotCoord, ForceMode.VelocityChange);
                     //Vector3 dir = (pivotCoord - player.transform.position).normalized;
                     //torque = Vector3.Cross(dir, player.transform.forward);
                     //player.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.VelocityChange);
                     //StartCoroutine("RotateOverTime", pivotCoord);
                     //player.GetComponent<Rigidbody>().angularVelocity = (angleVelocity.eulerAngles);
-                    //velocity *= vFalloff;
                 }
 
                 handIndex = -1;
