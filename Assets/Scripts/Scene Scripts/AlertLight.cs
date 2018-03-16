@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AlertLight : MonoBehaviour {
 
-    public float loopInterval = 2;
+    public float loopInterval = 4;
+    public float offset = 0.7f;
 
     private Light light;
     private float startTime;
@@ -22,12 +23,14 @@ public class AlertLight : MonoBehaviour {
         if (currTime < loopInterval / 2)
         {
             float perc = currTime / (loopInterval / 2);
-            light.color = new Color(1, perc, perc);
+            float c = perc * (1 - offset) + offset;
+            light.color = new Color(1, c, c);
         }
         else
         {
             float perc = (currTime - loopInterval / 2) / (loopInterval / 2);
-            light.color = new Color(1, 1 - perc, 1 - perc);
+            float c = (1 - perc) * (1 - offset) + offset;
+            light.color = new Color(1, c, c);
         }
 	}
 }
