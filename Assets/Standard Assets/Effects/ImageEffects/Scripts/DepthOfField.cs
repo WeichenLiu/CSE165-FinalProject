@@ -158,8 +158,20 @@ namespace UnityStandardAssets.ImageEffects
             internalBlurWidth = Mathf.Max(maxBlurSize, 0.0f);
 
             // focal & coc calculations
+            RaycastHit hitinfo;
+            bool ret = Physics.Raycast(cachedCamera.transform.position, cachedCamera.transform.forward, out hitinfo);
+            if (ret)
+            {
+                focalDistance01 = (cachedCamera.WorldToViewportPoint(hitinfo.point)).z / (cachedCamera.farClipPlane);
+                focalLength = (hitinfo.point - cachedCamera.transform.position).magnitude;
+            }
+            else
+            {
+                focalDistance01 = (focalTransform)
+                    ? (cachedCamera.WorldToViewportPoint(focalTransform.position)).z / (cachedCamera.farClipPlane)
+                    : FocalDistance01(focalLength);
+            }
 
-            focalDistance01 = (focalTransform) ? (cachedCamera.WorldToViewportPoint (focalTransform.position)).z / (cachedCamera.farClipPlane) : FocalDistance01 (focalLength);
             dofHdrMaterial.SetVector("_CurveParams", new Vector4(1.0f, focalSize, (1.0f / (1.0f - aperture) - 1.0f), focalDistance01));
 
             // possible render texture helpers

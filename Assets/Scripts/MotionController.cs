@@ -73,6 +73,7 @@ public class MotionController : MonoBehaviour
         {
             if (c.gameObject.name == "ChairTrigger")
             {
+
             }
             else
             {
