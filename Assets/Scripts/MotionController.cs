@@ -12,6 +12,7 @@ public class MotionController : MonoBehaviour
     public GameObject body;
 
     public Vector3 velocity;
+    public float maxSpeed = 0.7f;
     public Vector3 lastVel;
     public Quaternion angleVelocity;
 
@@ -22,6 +23,8 @@ public class MotionController : MonoBehaviour
 
     public bool triggered = false;
     private bool fired = true;
+    public bool breakGrab = false;
+    public Collider lastGrab;
 
     float lastTime;
 
@@ -29,14 +32,19 @@ public class MotionController : MonoBehaviour
 
     Vector3 lastCoord;
     Quaternion lastRot;
+    private Rigidbody r;
 
     // Use this for initialization
     void Start()
     {
+        Physics.IgnoreCollision(leftHand.GetComponent<Collider>(), rightHand.GetComponent<Collider>());
+        Physics.IgnoreCollision(leftHand.GetComponent<Collider>(), body.GetComponent<Collider>());
+        Physics.IgnoreCollision(body.GetComponent<Collider>(), rightHand.GetComponent<Collider>());
         velocity = new Vector3();
         angleVelocity = Quaternion.identity;
-        player.GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0.0f, 0f);
-        player.GetComponent<Rigidbody>().maxAngularVelocity = 0.7f;
+        r = player.GetComponent<Rigidbody>();
+        r.centerOfMass = new Vector3(0f, 0.0f, 0f);
+        r.maxAngularVelocity = 0.7f;
     }
 
     void updateContainer()
@@ -94,13 +102,14 @@ public class MotionController : MonoBehaviour
                 if (handIndex != 0 || !triggered)
                 {
                     pivotCoord = leftHand.transform.position;
-                    player.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-                    player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
-                    player.GetComponent<Rigidbody>().ResetInertiaTensor();
-                    player.GetComponent<Rigidbody>().isKinematic = true;
+                    r.velocity = new Vector3(0f, 0f, 0f);
+                    r.angularVelocity = new Vector3(0f, 0f, 0f);
+                    r.ResetInertiaTensor();
+                    r.isKinematic = true;
                     //pivotRot = rightHand.transform.localPosition;
                     triggered = true;
                     fired = false;
+                    lastGrab = c;
                 }
             }
             else if (handIndex == 1 &&
@@ -109,13 +118,14 @@ public class MotionController : MonoBehaviour
                 if (handIndex != 1 || !triggered)
                 {
                     pivotCoord = rightHand.transform.position;
-                    player.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-                    player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
-                    player.GetComponent<Rigidbody>().ResetInertiaTensor();
-                    player.GetComponent<Rigidbody>().isKinematic = true;
+                    r.velocity = new Vector3(0f, 0f, 0f);
+                    r.angularVelocity = new Vector3(0f, 0f, 0f);
+                    r.ResetInertiaTensor();
+                    r.isKinematic = true;
                     //pivotRot = rightHand.transform.localPosition;
                     triggered = true;
                     fired = false;
+                    lastGrab = c;
                 }
             }
             else
@@ -125,19 +135,32 @@ public class MotionController : MonoBehaviour
         }
     }
 
+    void OnTriggerExit(Collider c)
+    {
+        if (c == lastGrab)
+        {
+            breakGrab = false;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
-        updateContainer();
-        player.GetComponent<Rigidbody>().centerOfMass = new Vector3(0f, 0f, 0f);
+        //updateContainer();
+        
+        r.centerOfMass = new Vector3(0f, 0f, 0f);
         OVRInput.Update();
-        if ((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
+        if (r.velocity.magnitude > maxSpeed)
+        {
+            r.velocity = r.velocity.normalized * maxSpeed;
+        }
+        if (!breakGrab && ((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
             || (handIndex == 1 &&
-                OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f))
+                OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)))
         {
             if (triggered)
             {
-                player.GetComponentInChildren<Rigidbody>().isKinematic = false;
+                r.isKinematic = false;
                 if (handIndex == 0)
                 {
                     velocity = pivotCoord - leftHand.transform.position;
@@ -147,10 +170,10 @@ public class MotionController : MonoBehaviour
                     velocity = pivotCoord - rightHand.transform.position;
                 }
                 
-                player.GetComponent<Rigidbody>().velocity = new Vector3(0f, 0f, 0f);
-                player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
-                player.GetComponent<Rigidbody>().ResetInertiaTensor();
-                player.GetComponent<Rigidbody>().MovePosition(player.transform.position + velocity);
+                r.velocity = new Vector3(0f, 0f, 0f);
+                //player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
+                //player.GetComponent<Rigidbody>().ResetInertiaTensor();
+                r.MovePosition(player.transform.position + velocity);
                 float dist = (pivotCoord - player.transform.position + velocity).magnitude;
                 Quaternion rot = Quaternion.Slerp(player.transform.rotation,
                     Quaternion.Euler(pivotCoord - player.transform.position + velocity), 0.01f);
@@ -170,7 +193,7 @@ public class MotionController : MonoBehaviour
                 {
                     //player.transform.position += velocity;
                     angleVelocity = (Quaternion.Inverse(lastRot) * player.transform.rotation);
-                    player.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, pivotCoord, ForceMode.VelocityChange);
+                    r.AddForce(velocity / Time.deltaTime, ForceMode.VelocityChange);
                     //Vector3 dir = (pivotCoord - player.transform.position).normalized;
                     //torque = Vector3.Cross(dir, player.transform.forward);
                     //player.GetComponent<Rigidbody>().AddTorque(torque, ForceMode.VelocityChange);
