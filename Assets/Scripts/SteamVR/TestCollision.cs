@@ -25,7 +25,7 @@ public class TestCollision : MonoBehaviour
     {
 
         //Debug.Log(c.rigidbody.isKinematic);
-        if (c.gameObject.GetComponent<ForceTransfer>() && c.gameObject.GetComponent<ForceTransfer>().grabbed == true)
+        if (c.gameObject.GetComponent<Grabbable>() && c.gameObject.GetComponent<Grabbable>().grabbed == true)
         {
             last = c.collider;
             last.isTrigger = true;

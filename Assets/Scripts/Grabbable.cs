@@ -2,25 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ForceTransfer : MonoBehaviour {
-
+public class Grabbable : MonoBehaviour
+{
     public Rigidbody root;
     public bool grabbed = false;
     public Vector3 lastPos;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    void Start()
+    {
+        GetComponent<Rigidbody>().maxAngularVelocity = 0.7f;
+    }
 
     void OnCollisionEnter(Collision c)
     {
         //Debug.Log("Collided");
         if (!grabbed || c.rigidbody.name == root.name)
         {
-            
             return;
         }
+
         Vector3 vel0 = (this.transform.position - lastPos) / Time.deltaTime;
         float rootMass = root.mass;
         float targetMass = c.rigidbody.mass;
@@ -38,9 +39,9 @@ public class ForceTransfer : MonoBehaviour {
         }
     }
 
-	// Update is called once per frame
-	void Update ()
-	{
-	    lastPos = this.transform.position;
-	}
+    // Update is called once per frame
+    void Update()
+    {
+        lastPos = this.transform.position;
+    }
 }

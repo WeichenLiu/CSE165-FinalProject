@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SelectionController : MonoBehaviour {
-
+public class TestSelect : MonoBehaviour
+{
     public Rigidbody self;
     public GameObject rightHand;
     public GameObject light;
@@ -11,21 +11,20 @@ public class SelectionController : MonoBehaviour {
     public Vector3 velocity;
     public Vector3 lastPos;
     public float objSize = 0;
-
+    
     public bool attached = false;
 
     private bool fired = true;
     // Use this for initialization
-    void Start()
+    void Start ()
     {
     }
-
-    // Update is called once per frame
-    void Update()
+	
+	// Update is called once per frame
+    void FixedUpdate()
     {
         //Debug.Log(Input.GetAxis("SteamVRRightGrip"));
-        OVRInput.Update();
-        if (OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, OVRInput.Controller.RTouch) > 0.11f)
+        if (Input.GetAxis("SteamVRRightGrip") > 0.5001f)
         {
             if (!attached)
             {
@@ -48,8 +47,8 @@ public class SelectionController : MonoBehaviour {
                             attachedObj.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
                             attachedObj.GetComponent<Rigidbody>().ResetInertiaTensor();
                             //attachedObj.GetComponent<Rigidbody>().isKinematic = true;
-                            attachedObj.GetComponent<ForceTransfer>().grabbed = true;
-                            attachedObj.GetComponent<ForceTransfer>().root = self;
+                            attachedObj.GetComponent<Grabbable>().grabbed = true;
+                            attachedObj.GetComponent<Grabbable>().root = self;
                             Vector3 boundSize = attachedObj.GetComponent<Collider>().bounds.size;
                             objSize = Mathf.Max(Mathf.Max(boundSize.x, boundSize.y), boundSize.z);
                             //Debug.Log("attached: " + hitInfo.collider.name);
@@ -61,7 +60,7 @@ public class SelectionController : MonoBehaviour {
             else
             {
                 lastPos = attachedObj.transform.position;
-
+                
                 //
 
                 //player.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
@@ -83,27 +82,28 @@ public class SelectionController : MonoBehaviour {
             if (attached)
             {
                 attached = false;
-                attachedObj.GetComponent<ForceTransfer>().grabbed = false;
+                attachedObj.GetComponent<Grabbable>().grabbed = false;
                 attachedObj.GetComponent<Collider>().isTrigger = false;
                 //attachedObj.GetComponent<Rigidbody>().isKinematic = false;
             }
             if (!fired)
-            {
-                //velocity = transform.position - lastCoord;
-                if (velocity.magnitude >= 0.00001f)
                 {
-                    //player.transform.position += velocity;
-                    RaycastHit hitInfo;
-                    Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
-                        0.2f);
-                    attachedObj.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, hitInfo.point, ForceMode.VelocityChange);
-                    //velocity *= vFalloff;
+                    //velocity = transform.position - lastCoord;
+                    if (velocity.magnitude >= 0.00001f)
+                    {
+                        //player.transform.position += velocity;
+                        RaycastHit hitInfo;
+                        Physics.Raycast(rightHand.transform.position, rightHand.transform.forward, out hitInfo,
+                            0.2f);
+                        attachedObj.GetComponent<Rigidbody>().AddForceAtPosition(velocity / Time.deltaTime, hitInfo.point, ForceMode.VelocityChange);
+                        //velocity *= vFalloff;
+                    }
+                    fired = true;
                 }
-                fired = true;
+                
             }
 
-        }
-
     }
+
 
 }
