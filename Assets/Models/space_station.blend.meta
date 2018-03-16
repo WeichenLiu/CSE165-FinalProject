@@ -48,6 +48,45 @@ ModelImporter:
     100080: Photo_Frame
     100082: Pillow
     100084: Window
+    100086: Cabin_Handle
+    100088: Cabin_Handle_001
+    100090: Cabin_Handle_002
+    100092: Cabins_0_001
+    100094: Cabins_0_002
+    100096: Computer_Handles
+    100098: Computer_Handles_001
+    100100: Computer_Handles_002
+    100102: Electricity_Handle_1
+    100104: Electricity_Handle_1_001
+    100106: Electricity_Handle_1_002
+    100108: Electricity_Handle_1_003
+    100110: Electricity_Handle_2
+    100112: Electricity_Handle_2_001
+    100114: Electricity_Handle_2_002
+    100116: Electricity_Handle_2_003
+    100118: Electricity_Lock_Handle
+    100120: Electricity_Lock_Handle_001
+    100122: Electricity_Lock_Handle_002
+    100124: Electricity_Lock_Handle_003
+    100126: Station_Handles
+    100128: Station_Handles_001
+    100130: Station_Handles_002
+    100132: Station_Handles_003
+    100134: Station_Handles_004
+    100136: Station_Handles_005
+    100138: Station_Handles_006
+    100140: Station_Handles_007
+    100142: Station_Handles_008
+    100144: Station_Handles_009
+    100146: Station_Handles_010
+    100148: Station_Handles_011
+    100150: Station_Handles_012
+    100152: Station_Handles_013
+    100154: Station_Handles_014
+    100156: All_Handles
+    100158: Bed_Handles
+    100160: Bed_Handles_001
+    100162: Chair_Handle
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -91,6 +130,45 @@ ModelImporter:
     400080: Photo_Frame
     400082: Pillow
     400084: Window
+    400086: Cabin_Handle
+    400088: Cabin_Handle_001
+    400090: Cabin_Handle_002
+    400092: Cabins_0_001
+    400094: Cabins_0_002
+    400096: Computer_Handles
+    400098: Computer_Handles_001
+    400100: Computer_Handles_002
+    400102: Electricity_Handle_1
+    400104: Electricity_Handle_1_001
+    400106: Electricity_Handle_1_002
+    400108: Electricity_Handle_1_003
+    400110: Electricity_Handle_2
+    400112: Electricity_Handle_2_001
+    400114: Electricity_Handle_2_002
+    400116: Electricity_Handle_2_003
+    400118: Electricity_Lock_Handle
+    400120: Electricity_Lock_Handle_001
+    400122: Electricity_Lock_Handle_002
+    400124: Electricity_Lock_Handle_003
+    400126: Station_Handles
+    400128: Station_Handles_001
+    400130: Station_Handles_002
+    400132: Station_Handles_003
+    400134: Station_Handles_004
+    400136: Station_Handles_005
+    400138: Station_Handles_006
+    400140: Station_Handles_007
+    400142: Station_Handles_008
+    400144: Station_Handles_009
+    400146: Station_Handles_010
+    400148: Station_Handles_011
+    400150: Station_Handles_012
+    400152: Station_Handles_013
+    400154: Station_Handles_014
+    400156: All_Handles
+    400158: Bed_Handles
+    400160: Bed_Handles_001
+    400162: Chair_Handle
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -133,6 +211,45 @@ ModelImporter:
     2300078: Photo_Frame
     2300080: Pillow
     2300082: Window
+    2300084: Cabin_Handle
+    2300086: Cabin_Handle_001
+    2300088: Cabin_Handle_002
+    2300090: Cabins_0_001
+    2300092: Cabins_0_002
+    2300094: Computer_Handles
+    2300096: Computer_Handles_001
+    2300098: Computer_Handles_002
+    2300100: Electricity_Handle_1
+    2300102: Electricity_Handle_1_001
+    2300104: Electricity_Handle_1_002
+    2300106: Electricity_Handle_1_003
+    2300108: Electricity_Handle_2
+    2300110: Electricity_Handle_2_001
+    2300112: Electricity_Handle_2_002
+    2300114: Electricity_Handle_2_003
+    2300116: Electricity_Lock_Handle
+    2300118: Electricity_Lock_Handle_001
+    2300120: Electricity_Lock_Handle_002
+    2300122: Electricity_Lock_Handle_003
+    2300124: Station_Handles
+    2300126: Station_Handles_001
+    2300128: Station_Handles_002
+    2300130: Station_Handles_003
+    2300132: Station_Handles_004
+    2300134: Station_Handles_005
+    2300136: Station_Handles_006
+    2300138: Station_Handles_007
+    2300140: Station_Handles_008
+    2300142: Station_Handles_009
+    2300144: Station_Handles_010
+    2300146: Station_Handles_011
+    2300148: Station_Handles_012
+    2300150: Station_Handles_013
+    2300152: Station_Handles_014
+    2300154: All_Handles
+    2300156: Bed_Handles
+    2300158: Bed_Handles_001
+    2300160: Chair_Handle
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -175,6 +292,45 @@ ModelImporter:
     3300078: Photo_Frame
     3300080: Pillow
     3300082: Window
+    3300084: Cabin_Handle
+    3300086: Cabin_Handle_001
+    3300088: Cabin_Handle_002
+    3300090: Cabins_0_001
+    3300092: Cabins_0_002
+    3300094: Computer_Handles
+    3300096: Computer_Handles_001
+    3300098: Computer_Handles_002
+    3300100: Electricity_Handle_1
+    3300102: Electricity_Handle_1_001
+    3300104: Electricity_Handle_1_002
+    3300106: Electricity_Handle_1_003
+    3300108: Electricity_Handle_2
+    3300110: Electricity_Handle_2_001
+    3300112: Electricity_Handle_2_002
+    3300114: Electricity_Handle_2_003
+    3300116: Electricity_Lock_Handle
+    3300118: Electricity_Lock_Handle_001
+    3300120: Electricity_Lock_Handle_002
+    3300122: Electricity_Lock_Handle_003
+    3300124: Station_Handles
+    3300126: Station_Handles_001
+    3300128: Station_Handles_002
+    3300130: Station_Handles_003
+    3300132: Station_Handles_004
+    3300134: Station_Handles_005
+    3300136: Station_Handles_006
+    3300138: Station_Handles_007
+    3300140: Station_Handles_008
+    3300142: Station_Handles_009
+    3300144: Station_Handles_010
+    3300146: Station_Handles_011
+    3300148: Station_Handles_012
+    3300150: Station_Handles_013
+    3300152: Station_Handles_014
+    3300154: All_Handles
+    3300156: Bed_Handles
+    3300158: Bed_Handles_001
+    3300160: Chair_Handle
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -217,6 +373,45 @@ ModelImporter:
     4300078: Electricity_Lock_002
     4300080: Electricity_Cover_003
     4300082: Electricity_Lock_003
+    4300084: Computer_Handles_002
+    4300086: Computer_Handles_001
+    4300088: Computer_Handles
+    4300090: Cabin_Handle
+    4300092: Electricity_Lock_Handle
+    4300094: Electricity_Handle_2
+    4300096: Electricity_Handle_1
+    4300098: Station_Handles_014
+    4300100: Station_Handles_013
+    4300102: Station_Handles_012
+    4300104: Station_Handles_011
+    4300106: Station_Handles_010
+    4300108: Station_Handles_009
+    4300110: Station_Handles_008
+    4300112: Station_Handles_007
+    4300114: Station_Handles_006
+    4300116: Station_Handles_005
+    4300118: Station_Handles_004
+    4300120: Station_Handles_003
+    4300122: Station_Handles_002
+    4300124: Station_Handles_001
+    4300126: Station_Handles
+    4300128: Electricity_Handle_1_001
+    4300130: Electricity_Handle_2_001
+    4300132: Electricity_Lock_Handle_001
+    4300134: Electricity_Handle_1_002
+    4300136: Electricity_Handle_2_002
+    4300138: Electricity_Lock_Handle_002
+    4300140: Electricity_Handle_1_003
+    4300142: Electricity_Handle_2_003
+    4300144: Electricity_Lock_Handle_003
+    4300146: Cabin_Handle_001
+    4300148: Cabins_0_001
+    4300150: Cabin_Handle_002
+    4300152: Cabins_0_002
+    4300154: All_Handles
+    4300156: Chair_Handle
+    4300158: Bed_Handles_001
+    4300160: Bed_Handles
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
