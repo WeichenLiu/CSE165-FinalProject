@@ -87,6 +87,8 @@ ModelImporter:
     100158: Bed_Handles
     100160: Bed_Handles_001
     100162: Chair_Handle
+    100164: Computer_Cable
+    100166: Door_Cable
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -169,6 +171,8 @@ ModelImporter:
     400158: Bed_Handles
     400160: Bed_Handles_001
     400162: Chair_Handle
+    400164: Computer_Cable
+    400166: Door_Cable
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -250,6 +254,8 @@ ModelImporter:
     2300156: Bed_Handles
     2300158: Bed_Handles_001
     2300160: Chair_Handle
+    2300162: Computer_Cable
+    2300164: Door_Cable
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -331,6 +337,8 @@ ModelImporter:
     3300156: Bed_Handles
     3300158: Bed_Handles_001
     3300160: Chair_Handle
+    3300162: Computer_Cable
+    3300164: Door_Cable
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -412,6 +420,8 @@ ModelImporter:
     4300156: Chair_Handle
     4300158: Bed_Handles_001
     4300160: Bed_Handles
+    4300162: Door_Cable
+    4300164: Computer_Cable
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -419,17 +429,17 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material
-    second: {fileID: 2100000, guid: f341acd382b0db74982d3d37aa4f250a, type: 2}
+    second: {fileID: 2100000, guid: 2bdc899c22adbf641a33139430bcc938, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material_001
-    second: {fileID: 2100000, guid: a98ef86cdac4a5442b60d9269c723f55, type: 2}
+    second: {fileID: 2100000, guid: 5225c91afbebac14ab26027cd6999816, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: unnamed
-    second: {fileID: 2100000, guid: 1c171fa8ca06b2541ac6506b55bafe1e, type: 2}
+    second: {fileID: 2100000, guid: 24ad135c88726e5438ac8e8b7d0448ea, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -472,6 +482,8 @@ ModelImporter:
     optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
