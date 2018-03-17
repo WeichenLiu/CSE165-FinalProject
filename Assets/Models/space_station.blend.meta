@@ -89,6 +89,8 @@ ModelImporter:
     100162: Chair_Handle
     100164: Computer_Cable
     100166: Door_Cable
+    100168: Display_Handles_1
+    100170: Display_Handles_2
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -173,6 +175,8 @@ ModelImporter:
     400162: Chair_Handle
     400164: Computer_Cable
     400166: Door_Cable
+    400168: Display_Handles_1
+    400170: Display_Handles_2
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -256,6 +260,8 @@ ModelImporter:
     2300160: Chair_Handle
     2300162: Computer_Cable
     2300164: Door_Cable
+    2300166: Display_Handles_1
+    2300168: Display_Handles_2
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -339,6 +345,8 @@ ModelImporter:
     3300160: Chair_Handle
     3300162: Computer_Cable
     3300164: Door_Cable
+    3300166: Display_Handles_1
+    3300168: Display_Handles_2
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -422,6 +430,8 @@ ModelImporter:
     4300160: Bed_Handles
     4300162: Door_Cable
     4300164: Computer_Cable
+    4300166: Display_Handles_2
+    4300168: Display_Handles_1
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -435,6 +445,21 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material_001
     second: {fileID: 2100000, guid: 5225c91afbebac14ab26027cd6999816, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002
+    second: {fileID: 2100000, guid: c0a3b721b2ea39f478a8457ee50a4954, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_002__images_jpg_002
+    second: {fileID: 2100000, guid: 9f9c653f849deb449877ef43ef441bff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: None__images_jpg_002
+    second: {fileID: 2100000, guid: c0a3b721b2ea39f478a8457ee50a4954, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
