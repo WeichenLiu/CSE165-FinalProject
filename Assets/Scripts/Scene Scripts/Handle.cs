@@ -25,6 +25,7 @@ public class Handle : MonoBehaviour
         right = false;
         dragged = false;
         self = GetComponent<Collider>();
+        r.material.color = normal;
     }
 
 
