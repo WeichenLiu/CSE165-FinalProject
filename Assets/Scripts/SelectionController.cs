@@ -49,7 +49,7 @@ public class SelectionController : MonoBehaviour
                             attachedObj.GetComponent<Rigidbody>().ResetInertiaTensor();
                             //attachedObj.GetComponent<Rigidbody>().isKinematic = true;
                             attachedObj.GetComponent<Grabbable>().grabbed = true;
-                            attachedObj.GetComponent<Grabbable>().root = self;
+                            //attachedObj.GetComponent<Grabbable>().root = self;
                             Vector3 boundSize = attachedObj.GetComponent<Collider>().bounds.size;
                             objSize = Mathf.Max(Mathf.Max(boundSize.x, boundSize.y), boundSize.z);
                             //Debug.Log("attached: " + hitInfo.collider.name);

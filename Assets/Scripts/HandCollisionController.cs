@@ -8,6 +8,7 @@ public class HandCollisionController : MonoBehaviour
     public Rigidbody parentRigid;
     public Collider leftHand;
     public Collider rightHand;
+    public Collider head;
     public GameObject pivot;
     public Vector3 lastPosL;
     public Vector3 lastPosR;
@@ -110,6 +111,12 @@ public class HandCollisionController : MonoBehaviour
         //Debug.Log(c.relativeVelocity);
     }
 
+
+    public void AddForceAtPosition(Vector3 force, Vector3 pos, ForceMode mode)
+    {
+        updateContainer();
+        parentRigid.AddForceAtPosition(force, pos, mode);
+    }
 
     // Update is called once per frame
     void Update()
