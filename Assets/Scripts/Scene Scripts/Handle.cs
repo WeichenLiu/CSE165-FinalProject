@@ -12,7 +12,7 @@ public class Handle : MonoBehaviour
     public bool left;
     public bool right;
     public bool dragged;
-    private Collider self;
+    public Collider self;
 
 	// Use this for initialization
 	void Start ()
@@ -25,12 +25,9 @@ public class Handle : MonoBehaviour
 	    self = GetComponent<Collider>();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
-    bool updateState(Collider c, bool flag = true)
+
+    protected bool updateState(Collider c, bool flag = true)
     {
         bool ret = false;
         if (c.name == "controller_left")
@@ -48,7 +45,7 @@ public class Handle : MonoBehaviour
         return ret;
     }
 
-    void updateColor()
+    protected void updateColor()
     {
         if (dragged)
         {
@@ -64,9 +61,9 @@ public class Handle : MonoBehaviour
         }
     }
 
-    
 
-    void OnTriggerEnter(Collider c)
+
+    protected void OnTriggerEnter(Collider c)
     {
         if (updateState(c))
         {
@@ -74,7 +71,7 @@ public class Handle : MonoBehaviour
         }
     }
 
-    void OnTriggerStay(Collider c)
+    protected virtual void OnTriggerStay(Collider c)
     {
         if (updateState(c))
         {
@@ -92,7 +89,7 @@ public class Handle : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider c)
+    protected void OnTriggerExit(Collider c)
     {
         if (updateState(c, false))
         {
