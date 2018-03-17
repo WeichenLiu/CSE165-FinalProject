@@ -14,11 +14,14 @@ public class Handle : MonoBehaviour
     public bool dragged;
     public Collider self;
 
+    protected Renderer r;
+
 	// Use this for initialization
 	void Start ()
 	{
-	    Material m = Instantiate(GetComponent<Renderer>().material);
-	    GetComponent<Renderer>().material = m;
+	    r = GetComponent<Renderer>();
+	    Material m = Instantiate(r.material);
+	    r.material = m;
 	    left = false;
 	    right = false;
 	    dragged = false;
@@ -49,15 +52,15 @@ public class Handle : MonoBehaviour
     {
         if (dragged)
         {
-            GetComponent<Renderer>().material.color = drag;
+            r.material.color = drag;
         }
         else if (left || right)
         {
-            GetComponent<Renderer>().material.color = hover;
+            r.material.color = hover;
         }
         else
         {
-            GetComponent<Renderer>().material.color = normal;
+            r.material.color = normal;
         }
     }
 

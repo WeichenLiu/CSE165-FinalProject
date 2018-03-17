@@ -5,11 +5,10 @@ using UnityEngine;
 public class KeyboardDebug : MonoBehaviour
 {
 
-    public Door down;
-    public Door up;
-
-	// Use this for initialization
-	void Start () {
+    public Cable down;
+    public Cable up;
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,8 +17,8 @@ public class KeyboardDebug : MonoBehaviour
 	    if (Input.GetKeyDown("space"))
 	    {
             Debug.Log("Door toggle");
-	        up.Open();
-	        down.Open();
+	        up.activate();
+	        down.activate();
 	    }
 	}
 }
