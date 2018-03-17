@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Cable : MonoBehaviour
 {
-
     public Color inactive;
     public Color active;
     public bool isActive = false;
@@ -14,11 +13,11 @@ public class Cable : MonoBehaviour
     private MeshFilter mf;
 
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         r = GetComponent<Renderer>();
-	    Material m = r.material;
-	    r.material = Instantiate(m);
+        Material m = r.material;
+        r.material = Instantiate(m);
         mf = GetComponent<MeshFilter>();
         Mesh mesh = mf.mesh;
         mf.mesh = Instantiate(mesh);
@@ -29,7 +28,8 @@ public class Cable : MonoBehaviour
         {
             colors[i] = inactive;
         }
-        mesh.colors = colors;
+
+        mf.mesh.colors = colors;
     }
 
     public void activate(bool flag = true)
@@ -41,36 +41,41 @@ public class Cable : MonoBehaviour
         }
     }
 
+
     IEnumerator setGradientColorOverTime(float start)
     {
         var mesh = mf.mesh;
         var uv = mesh.uv;
         var colors = new Color[uv.Length];
+        int width = (int) Mathf.Sqrt(uv.Length);
         while (Time.time - start < time)
         {
             // Instead if vertex.y we use uv.x
             int startIndex = (int) (uv.Length * (Time.time - start) / time);
-            int i = 0;
-            for (; i < startIndex; i++)
+            int i = uv.Length - 1;
+            for (; i > uv.Length - startIndex && i > 0; i--)
             {
-                colors[i] = active;
+                colors[(i % width) * width + i / width] = active;
             }
 
-            for (; i < startIndex + gradientLength && i < uv.Length; i++) { 
-                colors[i] = Color.Lerp(active, inactive, uv[i].x);
+            for (; i > uv.Length - startIndex - gradientLength && i > 0; i--)
+            {
+                colors[(i % width) * width + i / width] =
+                    Color.Lerp(active, inactive, uv[(i % width) * width + i / width].y);
             }
 
-            for (; i < uv.Length; i++)
+            for (; i > 0; i--)
             {
-                colors[i] = inactive;
+                colors[(i % width) * width + i / width] = inactive;
             }
+
             mesh.colors = colors;
             yield return null;
         }
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+    }
 }

@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class Handle : MonoBehaviour
 {
-
     //public Material oMaterial;
-    public Color normal;
-    public Color hover;
-    public Color drag;
+    public static Color normal = new Color(0.2f, 0.6f, 1f);
+    public static Color hover = new Color(0.4f, 0.78f, 1f);
+    public static Color drag = new Color(1f, 0.92f, 0.4f);
     public bool left;
     public bool right;
     public bool dragged;
@@ -16,18 +15,17 @@ public class Handle : MonoBehaviour
 
     protected Renderer r;
 
-	// Use this for initialization
-	void Start ()
-	{
-	    r = GetComponent<Renderer>();
-	    Material m = Instantiate(r.material);
-	    r.material = m;
-	    left = false;
-	    right = false;
-	    dragged = false;
-	    self = GetComponent<Collider>();
-	}
-	
+    // Use this for initialization
+    void Start()
+    {
+        r = GetComponent<Renderer>();
+        Material m = Instantiate(r.material);
+        r.material = m;
+        left = false;
+        right = false;
+        dragged = false;
+        self = GetComponent<Collider>();
+    }
 
 
     protected bool updateState(Collider c, bool flag = true)
@@ -65,7 +63,6 @@ public class Handle : MonoBehaviour
     }
 
 
-
     protected void OnTriggerEnter(Collider c)
     {
         if (updateState(c))
@@ -88,6 +85,7 @@ public class Handle : MonoBehaviour
             {
                 mc.setPivot(1, self);
             }
+
             updateColor();
         }
     }
