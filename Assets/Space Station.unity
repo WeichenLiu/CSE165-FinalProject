@@ -675,6 +675,18 @@ FixedJoint:
 GameObject:
   m_PrefabParentObject: {fileID: 100048, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
   m_PrefabInternal: {fileID: 1363554699}
+--- !u!65 &798547787
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798547786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3777833, y: 0.16483764, z: 2.0923173}
+  m_Center: {x: 0.10204357, y: -0.008913202, z: -0.54008174}
 --- !u!114 &798547790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1008,6 +1020,18 @@ MonoBehaviour:
 GameObject:
   m_PrefabParentObject: {fileID: 100050, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
   m_PrefabInternal: {fileID: 1363554699}
+--- !u!65 &1065611765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1065611764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.3777833, y: 0.16483764, z: 1.6623253}
+  m_Center: {x: 0.10204357, y: -0.010331604, z: 0.8705042}
 --- !u!114 &1065611768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1884,6 +1908,14 @@ Prefab:
       propertyPath: m_LightProbeUsage
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2300162, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6c007284cecf6e4da4a753ec48dbc4b, type: 2}
+    - target: {fileID: 2300164, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d6c007284cecf6e4da4a753ec48dbc4b, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
   m_IsPrefabParent: 0
@@ -2743,6 +2775,10 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.6431016, y: 0.050772678, z: 0.059065618}
   m_Center: {x: -0.11493814, y: 2.2452996, z: 0.12154047}
+--- !u!1 &1363554794 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+  m_PrefabInternal: {fileID: 1363554699}
 --- !u!65 &1363554795
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3043,6 +3079,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.45551717, y: 1.2476369, z: 4.8989635}
   m_Center: {x: 2.5060794, y: 3.0449247, z: 0.051233318}
+--- !u!65 &1363554822
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363554794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7604215, y: 0.18059918, z: 0.92770493}
+  m_Center: {x: 0.45469496, y: 0.31151742, z: -0.0042996546}
+--- !u!65 &1363554823
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363554794}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.47277424, y: 1.0250586, z: 0.92770493}
+  m_Center: {x: -0.15728575, y: -0.110711604, z: -0.004299656}
+--- !u!1 &1363554824 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100040, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+  m_PrefabInternal: {fileID: 1363554699}
+--- !u!65 &1363554825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363554824}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.46664312, y: 1.7110319, z: 1.018946}
+  m_Center: {x: 0.10570653, y: -0.3616223, z: -0.35717607}
 --- !u!114 &1363554910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3054,9 +3130,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3072,9 +3148,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3090,9 +3166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3108,9 +3184,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3126,9 +3202,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3144,9 +3220,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3162,9 +3238,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3180,9 +3256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3198,9 +3274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3216,9 +3292,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3234,9 +3310,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3252,9 +3328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3270,9 +3346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3288,9 +3364,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3306,9 +3382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3324,9 +3400,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3342,9 +3418,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3360,9 +3436,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3378,9 +3454,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3396,9 +3472,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3414,9 +3490,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3432,9 +3508,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3450,9 +3526,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3468,9 +3544,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3486,9 +3562,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3504,9 +3580,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0.2352941, g: 0.46206895, b: 1, a: 0}
-  hover: {r: 0.5661765, g: 0.712779, b: 1, a: 0}
-  drag: {r: 1, g: 0.9383367, b: 0.44117647, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3522,9 +3598,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3540,9 +3616,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3558,9 +3634,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3576,9 +3652,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
@@ -3594,9 +3670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44d7445f2828d1f47aafd8dd6b88092f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normal: {r: 0, g: 0, b: 0, a: 0}
-  hover: {r: 0, g: 0, b: 0, a: 0}
-  drag: {r: 0, g: 0, b: 0, a: 0}
+  normal: {r: 0.19852942, g: 0.60202855, b: 1, a: 1}
+  hover: {r: 0.46323532, g: 0.7342488, b: 1, a: 1}
+  drag: {r: 1, g: 0.90740365, b: 0.3897059, a: 1}
   left: 0
   right: 0
   dragged: 0
