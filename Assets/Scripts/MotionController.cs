@@ -67,81 +67,45 @@ public class MotionController : MonoBehaviour
     }
 
 
-    void OnTriggerStay(Collider c)
+    public void setPivot(int hi, Collider c)
     {
-        if (handIndex == -1 && c.tag == "Drag")
+        lastGrab = c;
+        lastGrab.GetComponent<Handle>().dragged = true;
+        if (hi == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
         {
-            if (c.gameObject.name == "ChairTrigger")
+            if (handIndex != 0 || !triggered)
             {
+                pivotCoord = leftHand.transform.position;
+                r.velocity = new Vector3(0f, 0f, 0f);
+                //r.angularVelocity = new Vector3(0f, 0f, 0f);
+                r.ResetInertiaTensor();
+                //r.isKinematic = true;
+                //pivotRot = rightHand.transform.localPosition;
+                triggered = true;
+                fired = false;
+                handIndex = hi;
             }
-            else
+        }
+        else if (hi == 1 &&
+                 OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)
+        {
+            if (handIndex != 1 || !triggered)
             {
-                Collider[] cols = Physics.OverlapBox(c.bounds.center, c.bounds.extents);
-                for (int i = 0; i < cols.Length; i++)
-                {
-                    Collider curr = cols[i];
-                    //if (curr.name == "base")
-                    //{
-                    //    break;
-                    //}else 
-                    if (curr.gameObject.name == "controller_left")
-                    {
-                        handIndex = 0;
-                        break;
-                    }
-                    else if (curr.gameObject.name == "controller_right")
-                    {
-                        handIndex = 1;
-                        break;
-                    }
-                }
-            }
-
-            if (handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
-            {
-                if (handIndex != 0 || !triggered)
-                {
-                    pivotCoord = leftHand.transform.position;
-                    r.velocity = new Vector3(0f, 0f, 0f);
-                    r.angularVelocity = new Vector3(0f, 0f, 0f);
-                    r.ResetInertiaTensor();
-                    r.isKinematic = true;
-                    //pivotRot = rightHand.transform.localPosition;
-                    triggered = true;
-                    fired = false;
-                    lastGrab = c;
-                }
-            }
-            else if (handIndex == 1 &&
-                     OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)
-            {
-                if (handIndex != 1 || !triggered)
-                {
-                    pivotCoord = rightHand.transform.position;
-                    r.velocity = new Vector3(0f, 0f, 0f);
-                    r.angularVelocity = new Vector3(0f, 0f, 0f);
-                    r.ResetInertiaTensor();
-                    r.isKinematic = true;
-                    //pivotRot = rightHand.transform.localPosition;
-                    triggered = true;
-                    fired = false;
-                    lastGrab = c;
-                }
-            }
-            else
-            {
-                handIndex = -1;
+                pivotCoord = rightHand.transform.position;
+                r.velocity = new Vector3(0f, 0f, 0f);
+                //r.angularVelocity = new Vector3(0f, 0f, 0f);
+                r.ResetInertiaTensor();
+                //r.isKinematic = true;
+                //pivotRot = rightHand.transform.localPosition;
+                triggered = true;
+                fired = false;
+                handIndex = hi;
             }
         }
     }
 
-    void OnTriggerExit(Collider c)
-    {
-        if (c == lastGrab)
-        {
-            breakGrab = false;
-        }
-    }
+ 
+
 
     // Update is called once per frame
     void Update()
@@ -154,7 +118,7 @@ public class MotionController : MonoBehaviour
         {
             r.velocity = r.velocity.normalized * maxSpeed;
         }
-        if (!breakGrab && ((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
+        if (((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
             || (handIndex == 1 &&
                 OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)))
         {
@@ -200,7 +164,7 @@ public class MotionController : MonoBehaviour
                     //StartCoroutine("RotateOverTime", pivotCoord);
                     //player.GetComponent<Rigidbody>().angularVelocity = (angleVelocity.eulerAngles);
                 }
-
+                lastGrab.GetComponent<Handle>().dragged = false;
                 handIndex = -1;
                 fired = true;
             }
