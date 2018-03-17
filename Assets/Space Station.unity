@@ -273,7 +273,7 @@ MonoBehaviour:
   player: {fileID: 127156957}
   body: {fileID: 2005030689}
   velocity: {x: 0, y: 0, z: 0}
-  maxSpeed: 0.4
+  maxSpeed: 0.7
   lastVel: {x: 0, y: 0, z: 0}
   angleVelocity: {x: 0, y: 0, z: 0, w: 0}
   pivotCoord: {x: 0, y: 0, z: 0}
@@ -2137,6 +2137,22 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95f4a7d8d9b497e4a910e1bdb15cd6e3, type: 2}
+    - target: {fileID: 100166, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100164, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300164, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_PreserveUVs
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300162, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_PreserveUVs
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
   m_IsPrefabParent: 0

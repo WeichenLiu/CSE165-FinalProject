@@ -44,7 +44,7 @@ public class MotionController : MonoBehaviour
         angleVelocity = Quaternion.identity;
         r = player.GetComponent<Rigidbody>();
         r.centerOfMass = new Vector3(0f, 0.0f, 0f);
-        r.maxAngularVelocity = 0.7f;
+        r.maxAngularVelocity = 0.9f;
     }
 
     void updateContainer()
