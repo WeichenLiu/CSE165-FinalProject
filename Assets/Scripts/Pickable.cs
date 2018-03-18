@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grabbable : MonoBehaviour
+public class Pickable : MonoBehaviour
 {
 
 
     public HandCollisionController parent;
 
-    public bool grabbed = false;
+    public OVRGrabbable self;
     public Vector3 lastPos;
 
     private Collider cachedCollider;
@@ -23,22 +23,20 @@ public class Grabbable : MonoBehaviour
         Physics.IgnoreCollision(cachedCollider, parent.head);
         Physics.IgnoreCollision(cachedCollider, parent.leftHand);
         Physics.IgnoreCollision(cachedCollider, parent.rightHand);
+        self = this.GetComponent<OVRGrabbable>();
         rootMass = parent.parentRigid.mass;
     }
 
     void OnCollisionEnter(Collision c)
     {
-        //Debug.Log("Collided");
-        if (c.rigidbody.name == parent.parentRigid.name)
-        {
-            Debug.Log(c.transform.name + "Collided");
-        }
 
-        if (!grabbed || c.rigidbody.name == parent.parentRigid.name)
+
+        ///Debug.Log(gameObject.name + " Collision ");
+        if (!self.isGrabbed)
         {
             return;
         }
-
+        //Debug.Log("Collision" + c.collider.name);
         Vector3 vel0 = (this.transform.position - lastPos) / Time.deltaTime;
         float targetMass = c.rigidbody.mass;
         Vector3 contact = c.contacts[0].point;
@@ -55,6 +53,13 @@ public class Grabbable : MonoBehaviour
 
         }
     }
+
+    void OnTriggerStay(Collider c)
+    {
+        //Debug.Log(c.tag);
+    }
+
+   
 
     // Update is called once per frame
     void Update()

@@ -31,6 +31,8 @@ public class OVRGrabber : MonoBehaviour
     // Grip trigger thresholds for picking up objects, with some hysteresis.
     public float grabBegin = 0.55f;
     public float grabEnd = 0.35f;
+    public float maxVel = 2.0f;
+    public float maxAngVel = 2.0f;
 
     // Demonstrates parenting the held object to the hand's transform when grabbed.
     // When false, the grabbed object is moved every FixedUpdate using MovePosition. 
@@ -292,7 +294,7 @@ public class OVRGrabber : MonoBehaviour
             // Note: force teleport on grab, to avoid high-speed travel to dest which hits a lot of other objects at high
             // speed and sends them flying. The grabbed object may still teleport inside of other objects, but fixing that
             // is beyond the scope of this demo.
-            MoveGrabbedObject(m_lastPos, m_lastRot, true);
+            MoveGrabbedObject(m_lastPos, m_lastRot, false);
             if(m_parentHeldObject)
             {
                 m_grabbedObj.transform.parent = transform;
@@ -310,7 +312,10 @@ public class OVRGrabber : MonoBehaviour
         Rigidbody grabbedRigidbody = m_grabbedObj.grabbedRigidbody;
         Vector3 grabbablePosition = pos + rot * m_grabbedObjectPosOff;
         Quaternion grabbableRotation = rot * m_grabbedObjectRotOff;
-
+        if (grabbedRigidbody.velocity.magnitude > maxVel || grabbedRigidbody.angularVelocity.magnitude > maxAngVel)
+        {
+            ForceRelease(grabbedObject);
+        }
         if (forceTeleport)
         {
             grabbedRigidbody.transform.position = grabbablePosition;

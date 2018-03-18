@@ -53,13 +53,13 @@ public class HandCollisionController : MonoBehaviour
 
     void OnCollisionEnter(Collision c)
     {
-        Debug.Log(Time.time - lastCollision);
-        if (Time.time - lastCollision < collisionThres)
+        //Debug.Log(Time.time - lastCollision);
+        if (Time.time - lastCollision < collisionThres || c.collider.tag == "Pickable")
         {
             return;
         }
         lastCollision = Time.time;
-        Debug.Log(transform.name + parentRigid.name);
+        //Debug.Log(transform.name + parentRigid.name);
         float selfMass =0;
         float targetMass = 0;
         try {
