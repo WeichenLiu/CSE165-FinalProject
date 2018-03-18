@@ -103,6 +103,7 @@ ModelImporter:
     100190: Energy_Slot_2
     100192: Energy_Slot_3
     100194: Energy_Slot_2_001
+    100196: Note
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -201,6 +202,7 @@ ModelImporter:
     400190: Energy_Slot_2
     400192: Energy_Slot_3
     400194: Energy_Slot_2_001
+    400196: Note
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -298,6 +300,7 @@ ModelImporter:
     2300188: Energy_Slot_2
     2300190: Energy_Slot_3
     2300192: Energy_Slot_2_001
+    2300194: Note
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -395,6 +398,7 @@ ModelImporter:
     3300188: Energy_Slot_2
     3300190: Energy_Slot_3
     3300192: Energy_Slot_2_001
+    3300194: Note
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -492,6 +496,7 @@ ModelImporter:
     4300188: Energy_Ball_1
     4300190: Energy_Slot_3
     4300192: Energy_Slot_2_001
+    4300194: Note
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -514,7 +519,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material_002__images_jpg_002
-    second: {fileID: 2100000, guid: 9f9c653f849deb449877ef43ef441bff, type: 2}
+    second: {fileID: 2100000, guid: e646ed18defc8c44882b8105efe83c60, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -524,12 +529,12 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material_004
-    second: {fileID: 2100000, guid: b8e477d567967aa4cb90d91e374d619f, type: 2}
+    second: {fileID: 2100000, guid: 5ab33901f0e29b842acde56eb8312a4a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material_005
-    second: {fileID: 2100000, guid: 66b98bdad7b19ae4ea6ee4d0f46c090f, type: 2}
+    second: {fileID: 2100000, guid: bb75ab0832765e148a82721759f932f5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -539,7 +544,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material_008
-    second: {fileID: 2100000, guid: 6f1a95f627fdc0747923ba192ada7709, type: 2}
+    second: {fileID: 2100000, guid: e1c7b80046b2c3f4b95a49e6a8b75ec6, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -575,6 +580,16 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material_021
     second: {fileID: 2100000, guid: 8aaefef13bc25394f9f66878bb8c73fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_023
+    second: {fileID: 2100000, guid: 8376e4b0b6c58eb4285b729eab98e567, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_024
+    second: {fileID: 2100000, guid: 958acbfc106b2494f80fe7213c1ea817, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
