@@ -227,7 +227,7 @@ MonoBehaviour:
   parentRigid: {fileID: 127156958}
   leftHand: {fileID: 2074560483}
   rightHand: {fileID: 2074560482}
-  head: {fileID: 2005030697}
+  head: {fileID: 0}
   pivot: {fileID: 2005030689}
   lastPosL: {x: 0, y: 0, z: 0}
   lastPosR: {x: 0, y: 0, z: 0}
@@ -602,7 +602,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 445371249}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -829,6 +829,7 @@ GameObject:
   - component: {fileID: 875711068}
   - component: {fileID: 875711070}
   - component: {fileID: 875711069}
+  - component: {fileID: 875711071}
   m_Layer: 0
   m_Name: Station 2
   m_TagString: Untagged
@@ -873,6 +874,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 4.890679, y: 0.21475269, z: 1.6835027}
   m_Center: {x: -0.7824553, y: 0.46486104, z: -3.068575}
+--- !u!54 &875711071
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 875711067}
+  serializedVersion: 2
+  m_Mass: 130
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1 &916678080 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100052, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
@@ -3406,48 +3422,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &1363554865
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1363554776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acafe35411cfa5d458b495592d271cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 127156959}
-  grabbed: 0
-  lastPos: {x: 0, y: 0, z: 0}
---- !u!114 &1363554869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1363554778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acafe35411cfa5d458b495592d271cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 127156959}
-  grabbed: 0
-  lastPos: {x: 0, y: 0, z: 0}
---- !u!114 &1363554873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1363554780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acafe35411cfa5d458b495592d271cfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parent: {fileID: 127156959}
-  grabbed: 0
-  lastPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1363554910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4312,6 +4286,7 @@ GameObject:
   - component: {fileID: 1624278846}
   - component: {fileID: 1624278848}
   - component: {fileID: 1624278847}
+  - component: {fileID: 1624278849}
   m_Layer: 0
   m_Name: Station 1
   m_TagString: Untagged
@@ -4356,6 +4331,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.0702822, y: 0.5079209, z: 8.666951}
   m_Center: {x: -0.74421275, y: 2.7679515, z: -5.6937065}
+--- !u!54 &1624278849
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1624278845}
+  serializedVersion: 2
+  m_Mass: 130
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2
 --- !u!1 &1746895227
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,7 +4418,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1746895227}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -4931,7 +4921,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2019874276}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
@@ -5108,6 +5098,7 @@ GameObject:
   - component: {fileID: 2119813507}
   - component: {fileID: 2119813509}
   - component: {fileID: 2119813508}
+  - component: {fileID: 2119813510}
   m_Layer: 0
   m_Name: Station 3
   m_TagString: Untagged
@@ -5152,3 +5143,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.3161553, y: 4.04299, z: 0.3657389}
   m_Center: {x: -5.9946117, y: 0.45015752, z: -7.8091726}
+--- !u!54 &2119813510
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2119813506}
+  serializedVersion: 2
+  m_Mass: 130
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 126
+  m_CollisionDetection: 2

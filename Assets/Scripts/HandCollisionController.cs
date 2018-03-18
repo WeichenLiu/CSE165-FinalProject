@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 
 public class HandCollisionController : MonoBehaviour
 {
@@ -58,8 +59,17 @@ public class HandCollisionController : MonoBehaviour
             return;
         }
         lastCollision = Time.time;
-        float selfMass = parentRigid.mass;
-        float targetMass = c.rigidbody.mass;
+        Debug.Log(transform.name + parentRigid.name);
+        float selfMass =0;
+        float targetMass = 0;
+        try {
+            selfMass = parentRigid.mass;
+            targetMass = c.rigidbody.mass;
+        }
+        catch (Exception e)
+        {
+            print("error");
+        }
         Vector3 vDir = (transform.position - c.transform.position).normalized;
 
         Vector3 tv1 = (leftHand.transform.position - lastPosL) / Time.deltaTime;
