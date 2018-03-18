@@ -30,7 +30,7 @@ public class Pickable : MonoBehaviour
     void OnCollisionEnter(Collision c)
     {
 
-
+        return;
         ///Debug.Log(gameObject.name + " Collision ");
         if (!self.isGrabbed)
         {
