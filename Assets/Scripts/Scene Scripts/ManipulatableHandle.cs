@@ -10,21 +10,21 @@ public class ManipulatableHandle : Handle
     public GameObject hand;
     public int handIndex = -1;
     private Vector3 velocity;
+    private Vector3 pivotRot;
     private bool fired = true;
+    private bool triggered = false;
     protected override void OnTriggerStay(Collider c)
     {
-        if (locked)
+        if (!triggered)
         {
             base.OnTriggerStay(c);
-        }
-        else
-        {
             if (left && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
             {
                 handIndex = 0;
                 hand = c.gameObject;
                 dragged = true;
                 fired = false;
+                triggered = true;
             }
             else if (right &&
                      OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)
@@ -33,54 +33,71 @@ public class ManipulatableHandle : Handle
                 hand = c.gameObject;
                 dragged = true;
                 fired = false;
+                triggered = true;
             }
 
-            if (dragged)
+            if (handIndex > -1)
             {
-                this.transform.parent = bindedPart.transform;
-
+                pivotRot = hand.transform.localRotation.eulerAngles;
             }
-            updateColor();
         }
     }
 
     void Update()
     {
-
-        if (!locked)
+        
+        if (triggered)
         {
-            if (((handIndex == 0 &&
-                  OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
-                 || (handIndex == 1 &&
-                     OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)))
+            if ((left && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f) ||
+                ((right &&
+                  OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)))
             {
-                if (dragged)
+                if (locked)
                 {
-                    velocity = transform.position - hand.transform.position;
+                    Debug.Log(hand.transform.localRotation.eulerAngles);
+                    if (pivotRot.z < 50)
+                    {
+                        if (hand.transform.localRotation.eulerAngles.z > 300)
+                        {
+                            pivotRot.z = 360 + pivotRot.z;
+                        }
+                    }
+                    else if(pivotRot.z > 300)
+                    {
+                        if (hand.transform.localRotation.eulerAngles.z < 50)
+                        {
+                            pivotRot.z = pivotRot.z - 360;
+                        }
+                    }
+                    Vector3 deltaRot = hand.transform.localRotation.eulerAngles - pivotRot;
+                    pivotRot = hand.transform.localRotation.eulerAngles;
+                    Vector3 old = transform.rotation.eulerAngles;
+                    old.x -= deltaRot.z;
+                    if (old.x < 269)
 
-                    bindedPart.velocity = new Vector3(0f, 0f, 0f);
-                    //player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
-                    //player.GetComponent<Rigidbody>().ResetInertiaTensor();
-                    bindedPart.MovePosition(bindedPart.transform.position + velocity);
-                    
+                    {
+                        old.x = 269;
+                    }
 
+                    if (old.x > 358)
+                    {
+                        old.x = 358;
+                    }
+
+                    if (old.x > 0)
+                    {
+                        //locked = false;
+                    }
+
+                    transform.rotation = Quaternion.Euler(old);
                 }
             }
-        }
-        else
-        {
-            dragged = false;
-            if (!fired)
+            else
             {
-                //velocity = transform.position - lastCoord;
-                if ((velocity / Time.deltaTime).magnitude >= 0.001f)
-                {
-                    bindedPart.AddForce(velocity / Time.deltaTime, ForceMode.VelocityChange);
-                }
-                handIndex = -1;
-                fired = true;
+                triggered = false;
             }
         }
+
     }
     
 }
