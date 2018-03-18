@@ -9,20 +9,22 @@ public class ComputerKey : MonoBehaviour {
     public static Color hover = new Color(1, 1, 0, 0.2f);
     public static Color active = new Color(1, 1, 0, 1f);
 
-    public string c;
+    public char character;
     public bool isEnter;
     public bool isSpecial;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         if (!isSpecial)
         {
-            this.GetComponentInChildren<Text>().text = c;
+            GetComponentInChildren<Text>().text = character.ToString();
         }
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
 		
 	}
 }
