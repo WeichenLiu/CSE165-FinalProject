@@ -10,21 +10,26 @@ public class Pickable : MonoBehaviour
 
     public OVRGrabbable self;
     public Vector3 lastPos;
+    public Vector3 initialVel = new Vector3();
 
     private Collider cachedCollider;
 
     private float rootMass;
 
+
     // Use this for initialization
     void Start()
     {
+        GetComponent<Rigidbody>().velocity = initialVel;
         cachedCollider = GetComponent<Collider>();
+
         GetComponent<Rigidbody>().maxAngularVelocity = 0.7f;
         Physics.IgnoreCollision(cachedCollider, parent.head);
         Physics.IgnoreCollision(cachedCollider, parent.leftHand);
         Physics.IgnoreCollision(cachedCollider, parent.rightHand);
         self = this.GetComponent<OVRGrabbable>();
         rootMass = parent.parentRigid.mass;
+        
     }
 
     void OnCollisionEnter(Collision c)
