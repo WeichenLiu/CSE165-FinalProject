@@ -91,6 +91,18 @@ ModelImporter:
     100166: Door_Cable
     100168: Display_Handles_1
     100170: Display_Handles_2
+    100172: Card
+    100174: Door_Lock
+    100176: Plane
+    100178: Energy_Slot
+    100180: Energy_Ball
+    100182: Energy_Ball_1
+    100184: Energy_Ball_2
+    100186: Energy_Ball_3
+    100188: Energy_Slot_1
+    100190: Energy_Slot_2
+    100192: Energy_Slot_3
+    100194: Energy_Slot_2_001
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -177,6 +189,18 @@ ModelImporter:
     400166: Door_Cable
     400168: Display_Handles_1
     400170: Display_Handles_2
+    400172: Card
+    400174: Door_Lock
+    400176: Plane
+    400178: Energy_Slot
+    400180: Energy_Ball
+    400182: Energy_Ball_1
+    400184: Energy_Ball_2
+    400186: Energy_Ball_3
+    400188: Energy_Slot_1
+    400190: Energy_Slot_2
+    400192: Energy_Slot_3
+    400194: Energy_Slot_2_001
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -262,6 +286,18 @@ ModelImporter:
     2300164: Door_Cable
     2300166: Display_Handles_1
     2300168: Display_Handles_2
+    2300170: Card
+    2300172: Door_Lock
+    2300174: Plane
+    2300176: Energy_Slot
+    2300178: Energy_Ball
+    2300180: Energy_Ball_1
+    2300182: Energy_Ball_2
+    2300184: Energy_Ball_3
+    2300186: Energy_Slot_1
+    2300188: Energy_Slot_2
+    2300190: Energy_Slot_3
+    2300192: Energy_Slot_2_001
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -347,6 +383,18 @@ ModelImporter:
     3300164: Door_Cable
     3300166: Display_Handles_1
     3300168: Display_Handles_2
+    3300170: Card
+    3300172: Door_Lock
+    3300174: Plane
+    3300176: Energy_Slot
+    3300178: Energy_Ball
+    3300180: Energy_Ball_1
+    3300182: Energy_Ball_2
+    3300184: Energy_Ball_3
+    3300186: Energy_Slot_1
+    3300188: Energy_Slot_2
+    3300190: Energy_Slot_3
+    3300192: Energy_Slot_2_001
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -432,6 +480,18 @@ ModelImporter:
     4300164: Computer_Cable
     4300166: Display_Handles_2
     4300168: Display_Handles_1
+    4300170: Card
+    4300172: Door_Lock
+    4300174: Plane
+    4300176: Energy_Slot
+    4300178: Energy_Ball
+    4300180: Energy_Slot_2
+    4300182: Energy_Slot_1
+    4300184: Energy_Ball_3
+    4300186: Energy_Ball_2
+    4300188: Energy_Ball_1
+    4300190: Energy_Slot_3
+    4300192: Energy_Slot_2_001
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
@@ -455,6 +515,66 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Material_002__images_jpg_002
     second: {fileID: 2100000, guid: 9f9c653f849deb449877ef43ef441bff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_003
+    second: {fileID: 2100000, guid: 1279d8457b46e7a4090dbfcc22cdcb6b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_004
+    second: {fileID: 2100000, guid: b8e477d567967aa4cb90d91e374d619f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_005
+    second: {fileID: 2100000, guid: 66b98bdad7b19ae4ea6ee4d0f46c090f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_006
+    second: {fileID: 2100000, guid: 2e558ec1e4b00c749971baa84643245e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_008
+    second: {fileID: 2100000, guid: 6f1a95f627fdc0747923ba192ada7709, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_009
+    second: {fileID: 2100000, guid: 54203677041ff0d478ec8bf300c6f2dc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_013
+    second: {fileID: 2100000, guid: 19253ab283c48dd4b809bb29ce1488d7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_014
+    second: {fileID: 2100000, guid: 8c740d6f876beab40b8a2d1526267f36, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_015
+    second: {fileID: 2100000, guid: 85b2f9e4bc152004fb9b8febd59c1a6a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_016
+    second: {fileID: 2100000, guid: 218257e23e82d2e4db2eb986bdd8df7a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_020
+    second: {fileID: 2100000, guid: 8d9927219a087694a981ecbcaf7599c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material_021
+    second: {fileID: 2100000, guid: 8aaefef13bc25394f9f66878bb8c73fe, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule

@@ -99,7 +99,7 @@ public class HandCollisionController : MonoBehaviour
             return;
         }
         //Debug.Log(c.rigidbody.name + vel0);
-        //contact = parentRigid.position + (contact - parentRigid.position).normalized;
+        contact = parentRigid.position + (contact - parentRigid.position).normalized;
         if ((targetMass / selfMass * vel0).magnitude > breakForce)
         {
             //parentRigid.GetComponent<MotionController>();
