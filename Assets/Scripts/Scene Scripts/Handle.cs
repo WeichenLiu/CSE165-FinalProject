@@ -5,13 +5,14 @@ using UnityEngine;
 public class Handle : MonoBehaviour
 {
     //public Material oMaterial;
-    public static Color normal = new Color(0.2f, 0.6f, 1f);
-    public static Color hover = new Color(0.4f, 0.78f, 1f);
-    public static Color drag = new Color(1f, 0.92f, 0.4f);
+    public static Color normalColor = new Color(0.2f, 0.6f, 1f);
+    public static Color hoverColor = new Color(0.4f, 0.78f, 1f);
+    public static Color dragColor = new Color(1f, 0.92f, 0.4f);
     public bool left;
     public bool right;
     public bool dragged;
     public Collider self;
+    public Vector3 normal;
 
     protected Renderer r;
 
@@ -25,7 +26,7 @@ public class Handle : MonoBehaviour
         right = false;
         dragged = false;
         self = GetComponent<Collider>();
-        r.material.color = normal;
+        r.material.color = normalColor;
     }
 
 
@@ -51,15 +52,15 @@ public class Handle : MonoBehaviour
     {
         if (dragged)
         {
-            r.material.color = drag;
+            r.material.color = dragColor;
         }
         else if (left || right)
         {
-            r.material.color = hover;
+            r.material.color = hoverColor;
         }
         else
         {
-            r.material.color = normal;
+            r.material.color = normalColor;
         }
     }
 
