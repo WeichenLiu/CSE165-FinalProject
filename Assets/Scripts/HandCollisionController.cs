@@ -68,6 +68,7 @@ public class HandCollisionController : MonoBehaviour
         }
         catch (Exception e)
         {
+            print(c.gameObject.name);
             print("error");
         }
         Vector3 vDir = (transform.position - c.transform.position).normalized;

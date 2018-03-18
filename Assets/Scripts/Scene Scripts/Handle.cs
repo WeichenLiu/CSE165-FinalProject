@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Handle : MonoBehaviour
 {
-    //public Material oMaterial;
+    public bool disable = false;
     public static Color normalColor = new Color(0.2f, 0.6f, 1f);
+    public static Color disableColor = new Color(0.7f, 0.7f, 0.7f);
     public static Color hoverColor = new Color(0.4f, 0.78f, 1f);
     public static Color dragColor = new Color(1f, 0.92f, 0.4f);
     public bool left;
@@ -29,10 +30,19 @@ public class Handle : MonoBehaviour
         r.material.color = normalColor;
     }
 
+    void Update()
+    {
+        updateColor();
+    }
 
     protected bool updateState(Collider c, bool flag = true)
     {
         bool ret = false;
+        if (disable)
+        {
+            r.material.color = disableColor;
+            return false;
+        }
         if (c.name == "controller_left")
         {
             left = flag;
@@ -67,6 +77,7 @@ public class Handle : MonoBehaviour
 
     protected void OnTriggerEnter(Collider c)
     {
+    
         if (updateState(c))
         {
             updateColor();

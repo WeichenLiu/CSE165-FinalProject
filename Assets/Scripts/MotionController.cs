@@ -23,7 +23,7 @@ public class MotionController : MonoBehaviour
 
     public bool triggered = false;
     private bool fired = true;
-    public bool breakGrab = false;
+    public bool forceBreak = false;
     public Collider lastGrab;
 
     float lastTime;
@@ -73,11 +73,16 @@ public class MotionController : MonoBehaviour
         lastGrab.GetComponent<Handle>().dragged = true;
         if (hi == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
         {
-            if (handIndex != 0 || !triggered)
+            if (handIndex != 0 && triggered)
+            {
+
+            }
+            if (!triggered)
             {
                 pivotCoord = leftHand.transform.position;
+
+                r.angularVelocity = Vector3.Cross(c.gameObject.GetComponent<Handle>().normal, r.velocity).normalized * 0.1f;
                 r.velocity = new Vector3(0f, 0f, 0f);
-                //r.angularVelocity = new Vector3(0f, 0f, 0f);
                 r.ResetInertiaTensor();
                 //r.isKinematic = true;
                 //pivotRot = rightHand.transform.localPosition;
@@ -85,15 +90,22 @@ public class MotionController : MonoBehaviour
                 fired = false;
                 handIndex = hi;
             }
+
+            
         }
         else if (hi == 1 &&
                  OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)
         {
-            if (handIndex != 1 || !triggered)
+            if (handIndex != 1 && triggered)
+            {
+
+            }
+            if (!triggered)
             {
                 pivotCoord = rightHand.transform.position;
+
+                r.angularVelocity = Vector3.Cross(c.gameObject.GetComponent<Handle>().normal, r.velocity).normalized * 0.1f;
                 r.velocity = new Vector3(0f, 0f, 0f);
-                //r.angularVelocity = new Vector3(0f, 0f, 0f);
                 r.ResetInertiaTensor();
                 //r.isKinematic = true;
                 //pivotRot = rightHand.transform.localPosition;
@@ -101,6 +113,8 @@ public class MotionController : MonoBehaviour
                 fired = false;
                 handIndex = hi;
             }
+
+            
         }
     }
 
@@ -118,7 +132,7 @@ public class MotionController : MonoBehaviour
         {
             r.velocity = r.velocity.normalized * maxSpeed;
         }
-        if (((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
+        if (!forceBreak && ((handIndex == 0 && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f)
             || (handIndex == 1 &&
                 OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.RTouch) > 0.11f)))
         {
@@ -133,7 +147,11 @@ public class MotionController : MonoBehaviour
                 {
                     velocity = pivotCoord - rightHand.transform.position;
                 }
-                
+
+                if (r.velocity.magnitude >= 0.2f || r.angularVelocity.magnitude >=0.4f)
+                {
+                    forceBreak = true;
+                }
                 r.velocity = new Vector3(0f, 0f, 0f);
                 //player.GetComponent<Rigidbody>().angularVelocity = new Vector3(0f, 0f, 0f);
                 //player.GetComponent<Rigidbody>().ResetInertiaTensor();
@@ -150,11 +168,13 @@ public class MotionController : MonoBehaviour
         else
         {
             triggered = false;
+            forceBreak = false;
             if (!fired)
             {
                 //velocity = transform.position - lastCoord;
                 if ((velocity / Time.deltaTime).magnitude >= 0.001f)
                 {
+                    r.velocity = new Vector3(0f, 0f, 0f);
                     //player.transform.position += velocity;
                     angleVelocity = (Quaternion.Inverse(lastRot) * player.transform.rotation);
                     r.AddForce(velocity / Time.deltaTime, ForceMode.VelocityChange);
