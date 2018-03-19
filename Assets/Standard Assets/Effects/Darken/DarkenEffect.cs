@@ -10,8 +10,13 @@ public class DarkenEffect : PostEffectsBase
     public Shader shader;
     Material gm;
     public Shader gshader;
-
+    [Range(0, 1)]
     public float ratio = 1.0f;
+    [Range(0, 1)]
+    public float tratio = 1.0f;
+
+    public Texture2D textTexL;
+    public Texture2D textTexR;
 
     public bool greyscale = false;
 
@@ -29,11 +34,17 @@ public class DarkenEffect : PostEffectsBase
         if (greyscale)
         {
             gm.SetFloat("_ratio", ratio);
+            gm.SetFloat("_tratio", tratio);
+            gm.SetTexture("_TextTexL", textTexL);
+            gm.SetTexture("_TextTexR", textTexR);
             Graphics.Blit(source, destination, gm);
         }
         else
         {
             m.SetFloat("_ratio", ratio);
+            m.SetFloat("_tratio", tratio);
+            m.SetTexture("_TextTexL", textTexL);
+            m.SetTexture("_TextTexR", textTexR);
             Graphics.Blit(source, destination, m);
         }
     }

@@ -7,7 +7,9 @@ public class VHSPostProcessEffect : PostEffectsBase {
 	Material m;
 	public Shader shader;
 	public MovieTexture VHS;
+    [Range(0, 1)]
     public float mratio = 1.0f;
+    [Range(0, 1)]
     public float vratio = 1.0f;
 
 	float yScanline, xScanline;
