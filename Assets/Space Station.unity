@@ -1728,6 +1728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962c691d2cb78cb4c83842a80dc09745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Color: 0
   EnergyCore: {fileID: 1363554845}
   ActivateDistance: 0.1
   Offset: {x: 0.02, y: 0, z: 0}
@@ -1984,6 +1985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962c691d2cb78cb4c83842a80dc09745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Color: 1
   EnergyCore: {fileID: 1363554844}
   ActivateDistance: 0.1
   Offset: {x: 0.02, y: 0, z: 0}
@@ -10227,6 +10229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 962c691d2cb78cb4c83842a80dc09745, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Color: 2
   EnergyCore: {fileID: 1363554846}
   ActivateDistance: 0.1
   Offset: {x: 0.02, y: 0, z: 0}

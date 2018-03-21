@@ -4,10 +4,18 @@ using UnityEngine;
 
 public class EnergySlot : MonoBehaviour {
 
+    public enum CoreColor
+    {
+        Red,
+        Green,
+        Blue
+    }
+
+    public CoreColor Color;
     public GameObject EnergyCore;
     public float ActivateDistance;
     public Vector3 Offset;
-    // TODO: GameController Reference
+    // public GameController Controller;
 
     private OVRGrabbable coreGrabbable;
     private bool activated = false;
@@ -40,6 +48,19 @@ public class EnergySlot : MonoBehaviour {
         EnergyCore.transform.position = transform.position + Offset;
         EnergyCore.transform.rotation = Quaternion.identity;
         EnergyCore.GetComponent<Rigidbody>().isKinematic = true;
+
+        switch (Color)
+        {
+            case CoreColor.Red:
+                // Controller.activateRedCore();
+                break;
+            case CoreColor.Blue:
+                // Controller.activateBlueCore();
+                break;
+            case CoreColor.Green:
+                // Controller.activateGreenCore();
+                break;
+        }
     }
 	
 	// Update is called once per frame
