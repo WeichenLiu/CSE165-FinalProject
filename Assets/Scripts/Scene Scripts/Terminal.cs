@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class Terminal : MonoBehaviour
 {
+    public AudioSource terminalAudio;
+    public AudioSource keyboardAudio;
+
+    public AudioClip keyboardClick;
+    public AudioClip error;
+    public AudioClip logon;
 
     public GameObject lockScreen;
     public GameController gc;

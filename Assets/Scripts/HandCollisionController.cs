@@ -119,7 +119,7 @@ public class HandCollisionController : MonoBehaviour
         {
             ignore = true;
             print(c.gameObject.name);
-            print("error");
+            //print("error");
         }
 
         if (ignore)
