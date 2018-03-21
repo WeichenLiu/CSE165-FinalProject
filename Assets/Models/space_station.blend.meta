@@ -105,6 +105,9 @@ ModelImporter:
     100194: Energy_Slot_2_001
     100196: Note
     100198: Cube
+    100200: Station_Handles_015
+    100202: Station_Handles_016
+    100204: Station_Handles_017
     400000: Bed
     400002: Cabins
     400004: Cabins_001
@@ -205,6 +208,9 @@ ModelImporter:
     400194: Energy_Slot_2_001
     400196: Note
     400198: Cube
+    400200: Station_Handles_015
+    400202: Station_Handles_016
+    400204: Station_Handles_017
     2300000: Bed
     2300002: Cabins
     2300004: Cabins_001
@@ -304,6 +310,9 @@ ModelImporter:
     2300192: Energy_Slot_2_001
     2300194: Note
     2300196: Cube
+    2300198: Station_Handles_015
+    2300200: Station_Handles_016
+    2300202: Station_Handles_017
     3300000: Bed
     3300002: Cabins
     3300004: Cabins_001
@@ -403,6 +412,9 @@ ModelImporter:
     3300192: Energy_Slot_2_001
     3300194: Note
     3300196: Cube
+    3300198: Station_Handles_015
+    3300200: Station_Handles_016
+    3300202: Station_Handles_017
     4300000: Cabins_002
     4300002: Cabins_001
     4300004: Chair
@@ -502,6 +514,9 @@ ModelImporter:
     4300192: Energy_Slot_2_001
     4300194: Note
     4300196: Cube
+    4300198: Station_Handles_017
+    4300200: Station_Handles_016
+    4300202: Station_Handles_015
     7400000: Default Take
     9500000: //RootNode
   externalObjects:
