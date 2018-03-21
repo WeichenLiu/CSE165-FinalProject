@@ -22,7 +22,7 @@ public class Terminal : MonoBehaviour
     public string currentInput;
 
     // Prefix of currentInput
-    private const string prefix = "liby99@ttl1 $ ";
+    private const string prefix = "shintaro@ttl1 $ ";
     private bool sflag = false;
     private float lastTime = 0;
 

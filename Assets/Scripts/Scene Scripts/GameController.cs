@@ -47,6 +47,7 @@ public class GameController : MonoBehaviour
         if (redCoreActivated && blueCoreActivated && greenCoreActivated)
         {
             terminal.enableDisplay();
+            terminalCable.activate();
         }
     }
 
