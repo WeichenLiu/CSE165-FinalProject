@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DoorLock : MonoBehaviour {
+public class DoorLock : MonoBehaviour
+{
 
+    
     public GameObject Card;
     public float ActivateDistance;
     public GameController Controller;
@@ -21,9 +23,12 @@ public class DoorLock : MonoBehaviour {
     private bool activated;
     private bool on;
     private bool hovering;
+    private AudioSource doorLockAudio;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start ()
+	{
+	    doorLockAudio = GetComponent<AudioSource>();
         SwitchOff();
 	}
 
@@ -66,6 +71,7 @@ public class DoorLock : MonoBehaviour {
 
     public void Activate()
     {
+        doorLockAudio.Play();
         activated = true;
         Controller.openDoor();
         StartCoroutine("ActivateUI", Time.time);
