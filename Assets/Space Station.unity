@@ -950,6 +950,74 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224464531184780612, guid: 4908cd58a36929f4ba30e67dc09e6279,
     type: 2}
   m_PrefabInternal: {fileID: 347725970}
+--- !u!1 &359400440
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 359400441}
+  - component: {fileID: 359400443}
+  - component: {fileID: 359400442}
+  m_Layer: 0
+  m_Name: Card Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &359400441
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359400440}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 618379700}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.018}
+  m_SizeDelta: {x: 0.2, y: 0.2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &359400442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359400440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 6fdd5043a21cc574c9cfce0e842770e8, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &359400443
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 359400440}
 --- !u!1001 &389289950
 Prefab:
   m_ObjectHideFlags: 0
@@ -1956,6 +2024,7 @@ GameObject:
   - component: {fileID: 618379703}
   - component: {fileID: 618379702}
   - component: {fileID: 618379701}
+  - component: {fileID: 618379704}
   m_Layer: 0
   m_Name: Door Lock
   m_TagString: Untagged
@@ -1974,6 +2043,8 @@ RectTransform:
   m_LocalScale: {x: 1.4285713, y: 1.4285713, z: 1.4285713}
   m_Children:
   - {fileID: 1722966513}
+  - {fileID: 359400441}
+  - {fileID: 1018121198}
   m_Father: {fileID: 702846326}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2039,6 +2110,27 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &618379704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 618379699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c61a68117e80be4890f08602386142b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Card: {fileID: 1363554838}
+  ActivateDistance: 0.1
+  Controller: {fileID: 1424598208}
+  ActivateTime: 2
+  Background: {fileID: 1722966514}
+  LockImage: {fileID: 1018121199}
+  CardImage: {fileID: 359400442}
+  DisableColor: {r: 0.1544118, g: 0.1544118, b: 0.1544118, a: 0.884}
+  NormalColor: {r: 0.007843138, g: 0.34117648, b: 1, a: 0.47843137}
+  ActivatedColor: {r: 0.042055637, g: 1, b: 0.007843137, a: 0.47843137}
 --- !u!1 &623377033 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100190, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
@@ -3818,6 +3910,74 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   loopInterval: 4
   offset: 0.7
+--- !u!1 &1018121197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1018121198}
+  - component: {fileID: 1018121200}
+  - component: {fileID: 1018121199}
+  m_Layer: 0
+  m_Name: Lock Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1018121198
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018121197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 618379700}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0.045}
+  m_SizeDelta: {x: 0.08, y: 0.12}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1018121199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018121197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 8a4d37d8fb291a44e8204263fa297d13, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1018121200
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018121197}
 --- !u!1001 &1047011282
 Prefab:
   m_ObjectHideFlags: 0
@@ -10832,7 +10992,6 @@ GameObject:
   - component: {fileID: 1885763232}
   - component: {fileID: 1885763231}
   - component: {fileID: 1885763230}
-  - component: {fileID: 1885763229}
   m_Layer: 0
   m_Name: Computer Lock Screen
   m_TagString: Untagged
@@ -10863,27 +11022,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.716, y: 0.737}
   m_SizeDelta: {x: 2, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1885763229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1885763227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ff5c8a486bc3842bb932ea850f5511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  keyboard: {fileID: 1196835506}
-  centerCamera: {fileID: 2005030689}
-  locked: 1
-  count: 5
-  switchTime: 1
-  maxLine: 14
-  display: []
-  current: []
-  currentInput: 
 --- !u!114 &1885763230
 MonoBehaviour:
   m_ObjectHideFlags: 0
