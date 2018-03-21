@@ -14,7 +14,7 @@ public class Terminal : MonoBehaviour
     public int count = 5;
     public float switchTime = 1.0f;
 
-    public int maxLine = 8;
+    public int maxLine = 14;
     public List<string> display;
     public List<string> current;
 
@@ -48,15 +48,23 @@ public class Terminal : MonoBehaviour
     {
         if (s[0] == '<') // <>
         {
-            if (s.Contains("Space"))
+            if (s.Contains("Backspace"))
+            {
+                if (currentInput.Length >= 1)
+                {
+                    currentInput = currentInput.Remove(currentInput.Length - 1);
+                }
+            }
+            else if (s.Contains("Space"))
             {
                 currentInput += " ";
             }
-
-            if (s.Contains("Enter"))
+            else if (s.Contains("Enter"))
             {
                 processCurrentInput();
             }
+
+            
         }
         else
         {
@@ -92,7 +100,7 @@ public class Terminal : MonoBehaviour
         }
         else
         {
-
+            display.Add(currentInput);
         }
 
         currentInput = "";
@@ -163,8 +171,8 @@ public class Terminal : MonoBehaviour
         if (count <= 0)
         {
             ge.enabled = true;
-            float factor = (0 - count) * 0.2f;
-            factor = factor > 1.0f ? 1.0f : factor;
+            float factor = (0 - count) * 0.1f;
+            factor = factor > 0.5f ? 0.5f : factor;
             ge.intensity = factor;
             ge.colorIntensity = factor;
             ge.flipIntensity = factor;
@@ -174,8 +182,8 @@ public class Terminal : MonoBehaviour
         if (count < -5)
         {
             ve.enabled = true;
-            float factor = (-5 - count) * 0.2f;
-            factor = factor > 1.0f ? 1.0f : factor;
+            float factor = (-5 - count) * 0.1f;
+            factor = factor > 0.5f ? 0.5f : factor;
             ve.vratio = factor;
         }
     }

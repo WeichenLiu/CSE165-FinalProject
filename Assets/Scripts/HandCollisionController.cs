@@ -6,6 +6,8 @@ using System;
 
 public class HandCollisionController : MonoBehaviour
 {
+    public GameObject left;
+    public GameObject right;
     public Rigidbody parentRigid;
     public Collider leftHand;
     public Collider rightHand;
@@ -19,11 +21,50 @@ public class HandCollisionController : MonoBehaviour
     public Collider lastCol;
     public float lastCollision;
     public float collisionThres = 300;
+    public bool colliderSetup = false;
 
     // Use this for initialization
     void Start()
     {
         
+    }
+
+    void addCollider()
+    {
+        if (left.transform.childCount < 1)
+        {
+            return;
+        }
+        Transform hand_l = left.transform.GetChild(0).GetChild(0).GetChild(0);
+        Transform hand_r = right.transform.GetChild(0).GetChild(0).GetChild(0);
+        for (int i = 0; i < hand_l.childCount; i++)
+        {
+            Transform c = hand_l.GetChild(i);
+            if (c.name.Contains("index"))
+            {
+                Transform index3 = c.GetChild(0).GetChild(0);
+                BoxCollider bc = index3.gameObject.AddComponent<BoxCollider>() as BoxCollider;
+                bc.size = new Vector3(0.05f, 0.015f, 0.015f);
+                bc.tag = "Fingertip";
+                bc.isTrigger = true;
+                break;
+            }
+        }
+        for (int i = 0; i < hand_r.childCount; i++)
+        {
+            Transform c = hand_r.GetChild(i);
+            if (c.name.Contains("index"))
+            {
+                Transform index3 = c.GetChild(0).GetChild(0);
+                BoxCollider bc = index3.gameObject.AddComponent<BoxCollider>() as BoxCollider;
+                bc.size = new Vector3(0.05f, 0.015f, 0.015f);
+                bc.tag = "Fingertip";
+                bc.isTrigger = true;
+                colliderSetup = true;
+
+                break;
+            }
+        }
     }
 
     void updateContainer()
@@ -51,6 +92,13 @@ public class HandCollisionController : MonoBehaviour
         
     }
 
+    public void disableCollision(Collider c, bool flag = true)
+    {
+        Physics.IgnoreCollision(c, head, flag);
+        Physics.IgnoreCollision(c, leftHand, flag);
+        Physics.IgnoreCollision(c, rightHand, flag);
+    }
+
     void OnCollisionEnter(Collision c)
     {
         //Debug.Log(Time.time - lastCollision);
@@ -62,14 +110,21 @@ public class HandCollisionController : MonoBehaviour
         //Debug.Log(transform.name + parentRigid.name);
         float selfMass =0;
         float targetMass = 0;
+        bool ignore = false;
         try {
             selfMass = parentRigid.mass;
             targetMass = c.rigidbody.mass;
         }
         catch (Exception e)
         {
+            ignore = true;
             print(c.gameObject.name);
             print("error");
+        }
+
+        if (ignore)
+        {
+            return;
         }
         Vector3 vDir = (transform.position - c.transform.position).normalized;
 
@@ -132,6 +187,10 @@ public class HandCollisionController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!colliderSetup)
+        {
+            addCollider();
+        }
         lastPosL = leftHand.transform.position;
         lastPosR = rightHand.transform.position;
     }

@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class ManipulatableHandle : Handle
 {
-
+    public HandCollisionController player;
+    public float lifeTime = 15.0f;
     public bool locked = true;
-    public Rigidbody bindedPart;
+    public GameObject bindedPart;
     public GameObject hand;
     public int handIndex = -1;
     private Vector3 velocity;
     private Vector3 pivotRot;
     private bool fired = true;
     private bool triggered = false;
+    private float startTime = 0;
     protected override void OnTriggerStay(Collider c)
     {
         if (locked)
@@ -46,9 +48,42 @@ public class ManipulatableHandle : Handle
         }
     }
 
+    
+
     void Update()
     {
-        
+        if (!locked) 
+        {
+            if (!fired)
+            {
+                BoxCollider bc = bindedPart.GetComponent<BoxCollider>();
+                player.disableCollision(bc);
+                BoxCollider[] bcs = bindedPart.GetComponentsInChildren<BoxCollider>();
+                for (int i = 0; i < bcs.Length; i++)
+                {
+                    player.disableCollision(bcs[i]);
+                }
+
+                bindedPart.transform.parent = transform;
+                Rigidbody r = GetComponent<Rigidbody>();
+                r.isKinematic = false;
+                r.AddForceAtPosition(new Vector3(0.4f, 0.4f, 0.6f),
+                    new Vector3(r.position.x - 0.1f, r.position.y, r.position.z - 0.2f), ForceMode.VelocityChange);
+
+                triggered = false;
+                left = false;
+                right = false;
+                fired = true;
+                startTime = Time.time;
+            }
+            else
+            {
+                if (Time.time - startTime > lifeTime)
+                {
+                    this.gameObject.SetActive(false);
+                }
+            }
+        }
         if (triggered)
         {
             if ((left && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f) ||
@@ -57,21 +92,8 @@ public class ManipulatableHandle : Handle
             {
                 if (locked)
                 {
-                    Debug.Log(hand.transform.localRotation.eulerAngles);
-                    //if (pivotRot.z < 50)
-                    //{
-                    //    if (hand.transform.localRotation.eulerAngles.z > 300)
-                    //    {
-                    //        pivotRot.z = 360 + pivotRot.z;
-                    //    }
-                    //}
-                    //else if(pivotRot.z > 300)
-                    //{
-                    //    if (hand.transform.localRotation.eulerAngles.z < 50)
-                    //    {
-                    //        pivotRot.z = pivotRot.z - 360;
-                    //    }
-                    //}
+                    
+                    
                     Vector3 deltaRot = hand.transform.localRotation.eulerAngles - pivotRot;
                     float z = deltaRot.z;
                     if (z < -250)
@@ -83,11 +105,14 @@ public class ManipulatableHandle : Handle
                     }
                     pivotRot = hand.transform.localRotation.eulerAngles;
                     Vector3 old = transform.rotation.eulerAngles;
+                    Debug.Log(z + ";" + old);
                     old.x -= z;
-                    if (old.x < 269)
+                    old.y = 0.0f;
+                    old.z = 0.0f;
+                    if (old.x < 268)
 
                     {
-                        old.x = 269;
+                        old.x = 268;
                     }
 
                     if (old.x > 358)
@@ -95,25 +120,14 @@ public class ManipulatableHandle : Handle
                         old.x = 358;
                     }
 
-                    if (old.x > 0)
+                    if (old.x > 357)
                     {
                         locked = false;
                     }
 
                     transform.rotation = Quaternion.Euler(old);
                 }
-                else
-                {
-
-                    bindedPart.transform.parent = transform;
-                    Rigidbody r = GetComponent<Rigidbody>();
-                    r.isKinematic = false;
-                    r.AddRelativeForce(new Vector3(0.1f,0,0), ForceMode.VelocityChange);
-
-                    triggered = false;
-                    left = false;
-                    right = false;
-                }
+                
             }
             else
             {
