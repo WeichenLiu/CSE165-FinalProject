@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     public Terminal terminal;
     public Cable terminalCable;
     public Cable doorCable;
+    public DoorLock doorLock;
     public Door doorUp;
     public Door doorDown;
     public GameObject card;
@@ -69,8 +70,9 @@ public class GameController : MonoBehaviour
         checkCoreActivation();
     }
 
-    public void activateDoorCable(bool flag = true)
+    public void activateDoorLock(bool flag = true)
     {
+        doorLock.SwitchOn();
         doorCable.activate(flag);
     }
 

@@ -24,7 +24,7 @@ public class DoorLock : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        SwitchOn();
+        SwitchOff();
 	}
 
     float GetDistance()
@@ -67,7 +67,7 @@ public class DoorLock : MonoBehaviour {
     public void Activate()
     {
         activated = true;
-        // Controller.openDoor();
+        Controller.openDoor();
         StartCoroutine("ActivateUI", Time.time);
     }
 

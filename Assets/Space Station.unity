@@ -2122,7 +2122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Card: {fileID: 1363554838}
-  ActivateDistance: 0.1
+  ActivateDistance: 0.3
   Controller: {fileID: 1424598208}
   ActivateTime: 2
   Background: {fileID: 1722966514}

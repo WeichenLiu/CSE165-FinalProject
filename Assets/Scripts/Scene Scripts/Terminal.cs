@@ -148,7 +148,7 @@ public class Terminal : MonoBehaviour
                         insertInput(doorClosed);
                         break;
                     case overridePad:
-                        gc.activateDoorCable();
+                        gc.activateDoorLock();
                         insertInput(overridePanel);
                         break;
                     default:
