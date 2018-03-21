@@ -1,11 +1,12 @@
 fileFormatVersion: 2
 guid: 324a486eb541aa848884bad1ebd7b5e6
-timeCreated: 18446744011573954816
+timeCreated: 1521590863
+licenseType: Free
 VideoClipImporter:
   externalObjects: {}
   serializedVersion: 2
   useLegacyImporter: 1
-  quality: 0.614
+  quality: 0.5
   isColorLinear: 0
   frameRange: 0
   startFrame: -1
@@ -22,8 +23,8 @@ VideoClipImporter:
       codec: 0
       resizeFormat: 0
       aspectRatio: 0
-      customWidth: 1
-      customHeight: 1
+      customWidth: 640
+      customHeight: 360
       bitrateMode: 2
       spatialQuality: 2
   userData: 

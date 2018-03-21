@@ -12,7 +12,10 @@ public class VHSPostProcessEffect : PostEffectsBase {
     [Range(0, 1)]
     public float vratio = 1.0f;
 
-	float yScanline, xScanline;
+    [Range(0, 1)]
+    public float scanlineRange = 0.0f;
+
+    float yScanline, xScanline;
 
 	public void Start() {
 		m = new Material(shader);
@@ -31,7 +34,10 @@ public class VHSPostProcessEffect : PostEffectsBase {
 		if(xScanline <= 0 || Random.value < 0.05){
 			xScanline = Random.value;
 		}
-		m.SetFloat("_yScanline", yScanline);
+
+	    yScanline *= scanlineRange;
+	    xScanline *= scanlineRange;
+        m.SetFloat("_yScanline", yScanline);
 		m.SetFloat("_xScanline", xScanline);
 	    m.SetFloat("_mratio", mratio);
 	    m.SetFloat("_vratio", vratio);
