@@ -61,7 +61,7 @@ public class HandCollisionController : MonoBehaviour
                 bc.tag = "Fingertip";
                 bc.isTrigger = true;
                 colliderSetup = true;
-
+                // hands:b_r_index_ignore
                 break;
             }
         }
