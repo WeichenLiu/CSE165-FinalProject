@@ -12,7 +12,7 @@ public class Pickable : MonoBehaviour
     public Vector3 lastPos;
     public Vector3 initialVel = new Vector3();
 
-    private Collider cachedCollider;
+    private Collider[] cachedCollider;
 
     private float rootMass;
 
@@ -21,54 +21,18 @@ public class Pickable : MonoBehaviour
     void Start()
     {
         GetComponent<Rigidbody>().velocity = initialVel;
-        cachedCollider = GetComponent<Collider>();
+        cachedCollider = GetComponents<Collider>();
 
         GetComponent<Rigidbody>().maxAngularVelocity = 0.7f;
-        Physics.IgnoreCollision(cachedCollider, parent.head);
-        Physics.IgnoreCollision(cachedCollider, parent.leftHand);
-        Physics.IgnoreCollision(cachedCollider, parent.rightHand);
+        foreach (Collider c in cachedCollider)
+        {
+            Physics.IgnoreCollision(c, parent.head);
+            Physics.IgnoreCollision(c, parent.leftHand);
+            Physics.IgnoreCollision(c, parent.rightHand);
+        }
+
         self = this.GetComponent<OVRGrabbable>();
         rootMass = parent.parentRigid.mass;
         
-    }
-
-    void OnCollisionEnter(Collision c)
-    {
-
-        return;
-        ///Debug.Log(gameObject.name + " Collision ");
-        if (!self.isGrabbed)
-        {
-            return;
-        }
-        //Debug.Log("Collision" + c.collider.name);
-        Vector3 vel0 = (this.transform.position - lastPos) / Time.deltaTime;
-        float targetMass = c.rigidbody.mass;
-        Vector3 contact = c.contacts[0].point;
-        //Debug.Log(name + vel0);
-        contact = parent.parentRigid.position + (contact - parent.parentRigid.position).normalized;
-        if (rootMass > targetMass)
-        {
-            parent.AddForceAtPosition((-1.0f) * vel0 * targetMass / rootMass, contact, ForceMode.VelocityChange);
-            c.rigidbody.AddForceAtPosition(vel0 * rootMass / targetMass, contact, ForceMode.VelocityChange);
-        }
-        else
-        {
-            parent.AddForceAtPosition((-1.0f) * vel0 * targetMass / rootMass, contact, ForceMode.VelocityChange);
-
-        }
-    }
-
-    void OnTriggerStay(Collider c)
-    {
-        //Debug.Log(c.tag);
-    }
-
-   
-
-    // Update is called once per frame
-    void Update()
-    {
-        lastPos = this.transform.position;
     }
 }
