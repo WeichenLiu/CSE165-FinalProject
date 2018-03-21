@@ -1,9 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ManipulatableHandle : Handle
 {
+
+    public AudioSource coverAudio;
     public HandCollisionController player;
     public float lifeTime = 15.0f;
     public bool locked = true;
@@ -15,6 +18,13 @@ public class ManipulatableHandle : Handle
     private bool fired = true;
     private bool triggered = false;
     private float startTime = 0;
+
+    protected override void Start()
+    {
+        base.Start();
+        coverAudio = GetComponent<AudioSource>();
+    }
+
     protected override void OnTriggerStay(Collider c)
     {
         if (locked)
@@ -56,6 +66,7 @@ public class ManipulatableHandle : Handle
         {
             if (!fired)
             {
+                coverAudio.Play();
                 BoxCollider bc = bindedPart.GetComponent<BoxCollider>();
                 player.disableCollision(bc);
                 BoxCollider[] bcs = bindedPart.GetComponentsInChildren<BoxCollider>();

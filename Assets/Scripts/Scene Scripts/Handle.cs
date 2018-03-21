@@ -18,7 +18,7 @@ public class Handle : MonoBehaviour
     protected Renderer r;
 
     // Use this for initialization
-    void Start()
+    protected virtual void Start()
     {
         r = GetComponent<Renderer>();
         Material m = Instantiate(r.material);

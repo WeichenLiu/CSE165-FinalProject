@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-
+    
     public float dist;
     public bool opened = false;
     public float time = 0.3f;
     public Vector3 startPos;
+    private AudioSource doorAudio;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
 	{
 	    startPos = this.transform.position;
+	    doorAudio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -23,6 +25,7 @@ public class Door : MonoBehaviour
 
     public void Open(bool flag = true)
     {
+        doorAudio.Play();
         opened = flag;
         StartCoroutine("OpenOverTime", Time.time);
     }

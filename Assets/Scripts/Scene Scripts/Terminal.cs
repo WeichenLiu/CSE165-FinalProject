@@ -7,6 +7,12 @@ using UnityEngine.UI;
 
 public class Terminal : MonoBehaviour
 {
+    public AudioSource terminalAudio;
+    public AudioSource keyboardAudio;
+
+    public AudioClip keyboardClick;
+    public AudioClip error;
+    public AudioClip logon;
 
     public GameObject lockScreen;
     public GameController gc;
@@ -65,6 +71,8 @@ public class Terminal : MonoBehaviour
         keyboard.SetActive(false);
         lockScreen.SetActive(false);
         text.enabled = false;
+        keyboardAudio.clip = keyboardClick;
+        terminalAudio.clip = error;
     }
 
     public void enableDisplay(bool flag = true)
@@ -77,6 +85,7 @@ public class Terminal : MonoBehaviour
 
     public void input(string s)
     {
+        playKeyboard();
         if (!locked)
         {
             if (s[0] == '<') // <>
@@ -87,12 +96,20 @@ public class Terminal : MonoBehaviour
                     {
                         currentInput = currentInput.Remove(currentInput.Length - 1);
                     }
+                    else
+                    {
+                        playError();
+                    }
                 }
                 else if (s.Contains("Space"))
                 {
                     if (currentInput.Length < 33)
                     {
                         currentInput += " ";
+                    }
+                    else
+                    {
+                        playError();
                     }
                 }
                 else if (s.Contains("Enter"))
@@ -108,6 +125,10 @@ public class Terminal : MonoBehaviour
                 {
                     currentInput += s;
                 }
+                else
+                {
+                    playError();
+                }
             }
         }
         else
@@ -120,12 +141,20 @@ public class Terminal : MonoBehaviour
                     {
                         passwordInput = passwordInput.Remove(passwordInput.Length - 1);
                     }
+                    else
+                    {
+                        playError();
+                    }
                 }
                 else if (s.Contains("Space"))
                 {
                     if (passwordInput.Length < 15)
                     {
                         passwordInput += " ";
+                    }
+                    else
+                    {
+                        playError();
                     }
                 }
                 else if (s.Contains("Enter"))
@@ -140,6 +169,10 @@ public class Terminal : MonoBehaviour
                 if (passwordInput.Length < 15)
                 {
                     passwordInput += s;
+                }
+                else
+                {
+                    playError();
                 }
             }
 
@@ -161,18 +194,41 @@ public class Terminal : MonoBehaviour
     {
         locked = false;
         lockScreen.SetActive(false);
+        playLogon();
         insertInput("Login successfully. Welcome Home.");
+    }
+
+    void playError()
+    {
+        terminalAudio.clip = error;
+        terminalAudio.Play();
+    }
+
+    void playLogon()
+    {
+        terminalAudio.PlayOneShot(logon);
+    }
+
+    void playKeyboard()
+    {
+        keyboardAudio.Play();
     }
 
     void wrongPassword()
     {
+        playError();
         passwordPrompt.text = "Wrong password. " + count + " more chances left.";
         passwordInput = "";
         passwordText.text = "";
         count--;
-        
     }
 
+
+    void processUnknownCommand()
+    {
+        playError();
+        insertInput(unknownCommand);
+    }
     void processCurrentInput()
     {
         if (locked)
@@ -214,7 +270,7 @@ public class Terminal : MonoBehaviour
                         break;
                     default:
                         doorFunction = false;
-                        insertInput(unknownCommand);
+                        processUnknownCommand();
                         break;
                 }
             }
