@@ -1732,6 +1732,7 @@ MonoBehaviour:
   EnergyCore: {fileID: 1363554845}
   ActivateDistance: 0.1
   Offset: {x: 0.02, y: 0, z: 0}
+  Controller: {fileID: 1424598208}
 --- !u!1001 &598325613
 Prefab:
   m_ObjectHideFlags: 0
@@ -1989,6 +1990,7 @@ MonoBehaviour:
   EnergyCore: {fileID: 1363554844}
   ActivateDistance: 0.1
   Offset: {x: 0.02, y: 0, z: 0}
+  Controller: {fileID: 1424598208}
 --- !u!1001 &629224626
 Prefab:
   m_ObjectHideFlags: 0
@@ -10256,6 +10258,7 @@ MonoBehaviour:
   EnergyCore: {fileID: 1363554846}
   ActivateDistance: 0.1
   Offset: {x: 0.02, y: 0, z: 0}
+  Controller: {fileID: 1424598208}
 --- !u!1001 &1768402766
 Prefab:
   m_ObjectHideFlags: 0
