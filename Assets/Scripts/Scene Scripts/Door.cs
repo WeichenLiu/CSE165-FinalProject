@@ -21,9 +21,9 @@ public class Door : MonoBehaviour
 		
 	}
 
-    public void Open()
+    public void Open(bool flag = true)
     {
-        opened = !opened;
+        opened = flag;
         StartCoroutine("OpenOverTime", Time.time);
     }
 
