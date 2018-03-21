@@ -7,7 +7,11 @@ using UnityEngine.UI;
 
 public class Terminal : MonoBehaviour
 {
+
+    public GameObject lockScreen;
     public GameController gc;
+    public Text passwordText;
+    public Text passwordPrompt;
     public Text text;
     public GameObject keyboard;
     public GameObject centerCamera;
@@ -20,7 +24,9 @@ public class Terminal : MonoBehaviour
     public List<string> display;
     public List<string> current;
 
-    public string currentInput;
+    public string currentInput = "";
+
+    private string passwordInput = "";
 
     // Prefix of currentInput
     private const string prefix = "shintaro@ttl1 $ ";
@@ -57,58 +63,112 @@ public class Terminal : MonoBehaviour
             display.Add("");
         }
         keyboard.SetActive(false);
+        lockScreen.SetActive(false);
         text.enabled = false;
     }
 
     public void enableDisplay(bool flag = true)
     {
+
         keyboard.SetActive(flag);
+        lockScreen.SetActive(flag);
         text.enabled = flag;
     }
 
     public void input(string s)
     {
-        if (s[0] == '<') // <>
+        if (!locked)
         {
-            if (s.Contains("Backspace"))
+            if (s[0] == '<') // <>
             {
-                if (currentInput.Length >= 1)
+                if (s.Contains("Backspace"))
                 {
-                    currentInput = currentInput.Remove(currentInput.Length - 1);
+                    if (currentInput.Length >= 1)
+                    {
+                        currentInput = currentInput.Remove(currentInput.Length - 1);
+                    }
                 }
+                else if (s.Contains("Space"))
+                {
+                    if (currentInput.Length < 33)
+                    {
+                        currentInput += " ";
+                    }
+                }
+                else if (s.Contains("Enter"))
+                {
+                    processCurrentInput();
+                }
+
+
             }
-            else if (s.Contains("Space"))
+            else
             {
                 if (currentInput.Length < 33)
                 {
-                    currentInput += " ";
+                    currentInput += s;
                 }
             }
-            else if (s.Contains("Enter"))
-            {
-                processCurrentInput();
-            }
-
-            
         }
         else
         {
-            if (currentInput.Length < 33)
+            if (s[0] == '<') // <>
             {
-                currentInput += s;
+                if (s.Contains("Backspace"))
+                {
+                    if (passwordInput.Length >= 1)
+                    {
+                        passwordInput = passwordInput.Remove(passwordInput.Length - 1);
+                    }
+                }
+                else if (s.Contains("Space"))
+                {
+                    if (passwordInput.Length < 15)
+                    {
+                        passwordInput += " ";
+                    }
+                }
+                else if (s.Contains("Enter"))
+                {
+                    processCurrentInput();
+                }
+
+
             }
+            else
+            {
+                if (passwordInput.Length < 15)
+                {
+                    passwordInput += s;
+                }
+            }
+
+            passwordText.text = "";
+            for (int i = 0; i < passwordInput.Length-1; i++)
+            {
+                passwordText.text += '*';
+            }
+
+            if (passwordInput.Length > 0)
+            {
+                passwordText.text += passwordInput[passwordInput.Length - 1];
+            }
+
         }
     }
 
     void loginSuccess()
     {
         locked = false;
+        lockScreen.SetActive(false);
         insertInput("Login successfully. Welcome Home.");
     }
 
     void wrongPassword()
     {
-        insertInput("Wrong password. " + count + " more chances left.");
+        passwordPrompt.text = "Wrong password. " + count + " more chances left.";
+        passwordInput = "";
+        passwordText.text = "";
         count--;
         
     }
@@ -117,7 +177,8 @@ public class Terminal : MonoBehaviour
     {
         if (locked)
         {
-            if (currentInput == (password))
+
+            if (passwordInput == (password))
             {
                 loginSuccess();
             }
@@ -170,10 +231,12 @@ public class Terminal : MonoBehaviour
         if (s.Length > 50)
         {
             int index = 50;
-            if (s[49]!=' ') {
-                index = s.LastIndexOf(' ');
+            if (s[49]!=' ')
+            {
+                string temp = s.Substring(0, 50);
+                index = temp.LastIndexOf(' ');
             }
-            curr += s.Substring(0, index);
+            curr = s.Substring(0, index);
             next = s.Substring(index);
             display.Add(curr);
             while (next.Length > 50)
@@ -181,12 +244,14 @@ public class Terminal : MonoBehaviour
                 index = 50;
                 if (next[49] != ' ')
                 {
-                    index = next.LastIndexOf(' ');
+                    string temp = next.Substring(0, 50);
+                    index = temp.LastIndexOf(' ');
                 }
-                curr += next.Substring(0, index);
+                curr = next.Substring(0, index);
                 next = next.Substring(index);
+                display.Add(curr);
             }
-            display.Add(curr);
+            display.Add(next);
         }
         else
         {

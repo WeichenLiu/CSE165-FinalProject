@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 452167254}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
@@ -4508,7 +4508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1196835507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9699,7 +9699,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51ff5c8a486bc3842bb932ea850f5511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lockScreen: {fileID: 1885763227}
   gc: {fileID: 1424598208}
+  passwordText: {fileID: 1940873741}
+  passwordPrompt: {fileID: 939328351}
   text: {fileID: 452167256}
   keyboard: {fileID: 1196835506}
   centerCamera: {fileID: 2005030689}
@@ -10833,14 +10836,13 @@ GameObject:
   - component: {fileID: 1885763232}
   - component: {fileID: 1885763231}
   - component: {fileID: 1885763230}
-  - component: {fileID: 1885763229}
   m_Layer: 0
   m_Name: Computer Lock Screen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1885763228
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10864,27 +10866,6 @@ RectTransform:
   m_AnchoredPosition: {x: 1.716, y: 0.737}
   m_SizeDelta: {x: 2, y: 1.2}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1885763229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1885763227}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ff5c8a486bc3842bb932ea850f5511, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  text: {fileID: 0}
-  keyboard: {fileID: 1196835506}
-  centerCamera: {fileID: 2005030689}
-  locked: 1
-  count: 5
-  switchTime: 1
-  maxLine: 14
-  display: []
-  current: []
-  currentInput: 
 --- !u!114 &1885763230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11153,7 +11134,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '|'
+  m_Text: 
 --- !u!222 &1940873742
 CanvasRenderer:
   m_ObjectHideFlags: 0
