@@ -15,7 +15,7 @@ public class EnergySlot : MonoBehaviour {
     public GameObject EnergyCore;
     public float ActivateDistance;
     public Vector3 Offset;
-    // public GameController Controller;
+    public GameController Controller;
 
     private OVRGrabbable coreGrabbable;
     private bool activated = false;
@@ -52,13 +52,13 @@ public class EnergySlot : MonoBehaviour {
         switch (Color)
         {
             case CoreColor.Red:
-                // Controller.activateRedCore();
+                Controller.activateRedCore();
                 break;
             case CoreColor.Blue:
-                // Controller.activateBlueCore();
+                Controller.activateBlueCore();
                 break;
             case CoreColor.Green:
-                // Controller.activateGreenCore();
+                Controller.activateGreenCore();
                 break;
         }
     }

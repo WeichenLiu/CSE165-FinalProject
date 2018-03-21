@@ -56,14 +56,17 @@ public class GameController : MonoBehaviour
     public void activateRedCore(bool flag = true)
     {
         redCoreActivated = true;
+        checkCoreActivation();
     }
     public void activateGreenCore(bool flag = true)
     {
         greenCoreActivated = true;
+        checkCoreActivation();
     }
     public void activateBlueCore(bool flag = true)
     {
         blueCoreActivated = true;
+        checkCoreActivation();
     }
 
     public void activateDoorCable(bool flag = true)
