@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class Terminal : MonoBehaviour
 {
+    public GameController gc;
     public Text text;
     public GameObject keyboard;
     public GameObject centerCamera;
@@ -32,10 +33,22 @@ public class Terminal : MonoBehaviour
     private const string ls = "LS";
     private const string cat = "CAT";
     private const string help = "HELP";
+    //
     private const string open = "OPEN";
+    private const string door = "DOOR";
+    private const string close = "CLOSE";
+    private const string overridePad = "OVERRIDE";
+
+    
+
+    private bool doorFunction = false;
 
     // response
     private const string login = "";
+    private const string doorOpened = "Door is opened. Have a nice day.";
+    private const string doorClosed = "Door is closed.";
+    private const string overridePanel = "Override panel enable. Please swipe your card to manual open the door.";
+    private const string unknownCommand = "Unknown command. Please use \"HELP\" to check for available command.";
 
     // Use this for initialization
     void Start () {
@@ -66,7 +79,10 @@ public class Terminal : MonoBehaviour
             }
             else if (s.Contains("Space"))
             {
-                currentInput += " ";
+                if (currentInput.Length < 33)
+                {
+                    currentInput += " ";
+                }
             }
             else if (s.Contains("Enter"))
             {
@@ -77,19 +93,22 @@ public class Terminal : MonoBehaviour
         }
         else
         {
-            currentInput += s;
+            if (currentInput.Length < 33)
+            {
+                currentInput += s;
+            }
         }
     }
 
     void loginSuccess()
     {
         locked = false;
-        display.Add("Login successfully. Welcome Home.");
+        insertInput("Login successfully. Welcome Home.");
     }
 
     void wrongPassword()
     {
-        display.Add("Wrong password. " + count + " more chances left.");
+        insertInput("Wrong password. " + count + " more chances left.");
         count--;
         
     }
@@ -109,10 +128,71 @@ public class Terminal : MonoBehaviour
         }
         else
         {
-            display.Add(currentInput);
+            
+            display.Add(prefix + currentInput);
+            if (currentInput == door)
+            {
+                doorFunction = !doorFunction;
+            }
+            else if(doorFunction)
+            {
+                switch (currentInput)
+                {
+                    case open:
+                        // or not
+                        gc.openDoor();
+                        insertInput(doorOpened);
+                        break;
+                    case close:
+                        gc.openDoor(false);
+                        insertInput(doorClosed);
+                        break;
+                    case overridePad:
+                        gc.activateDoorCable();
+                        insertInput(overridePanel);
+                        break;
+                    default:
+                        doorFunction = false;
+                        insertInput(unknownCommand);
+                        break;
+                }
+            }
+            
         }
 
         currentInput = "";
+    }
+
+    void insertInput(string s)
+    {
+        string curr = "";
+        string next = "";
+        if (s.Length > 50)
+        {
+            int index = 50;
+            if (s[49]!=' ') {
+                index = s.LastIndexOf(' ');
+            }
+            curr += s.Substring(0, index);
+            next = s.Substring(index);
+            display.Add(curr);
+            while (next.Length > 50)
+            {
+                index = 50;
+                if (next[49] != ' ')
+                {
+                    index = next.LastIndexOf(' ');
+                }
+                curr += next.Substring(0, index);
+                next = next.Substring(index);
+            }
+            display.Add(curr);
+        }
+        else
+        {
+            curr += s;
+            display.Add(curr);
+        }
     }
 
     void updateDisplay()

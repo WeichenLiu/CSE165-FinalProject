@@ -42,6 +42,8 @@ public class GameController : MonoBehaviour
 		
 	}
 
+
+
     void checkCoreActivation()
     {
         if (redCoreActivated && blueCoreActivated && greenCoreActivated)
@@ -62,5 +64,16 @@ public class GameController : MonoBehaviour
     public void activateBlueCore(bool flag = true)
     {
         blueCoreActivated = true;
+    }
+
+    public void activateDoorCable(bool flag = true)
+    {
+        doorCable.activate(flag);
+    }
+
+    public void openDoor(bool flag = true)
+    {
+        doorUp.Open(flag);
+        doorDown.Open(flag);
     }
 }
