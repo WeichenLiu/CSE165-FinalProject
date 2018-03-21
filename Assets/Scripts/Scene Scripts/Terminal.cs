@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class Terminal : MonoBehaviour
 {
     public Text text;
+    public GameObject keyboard;
     public GameObject centerCamera;
     public bool locked = true;
 
@@ -42,6 +43,14 @@ public class Terminal : MonoBehaviour
         {
             display.Add("");
         }
+        keyboard.SetActive(false);
+        text.enabled = false;
+    }
+
+    public void enableDisplay(bool flag = true)
+    {
+        keyboard.SetActive(flag);
+        text.enabled = flag;
     }
 
     public void input(string s)
@@ -191,10 +200,13 @@ public class Terminal : MonoBehaviour
 
     // Update is called once per frame
     void Update () {
-		updateDisplay();
-        updateOutput();
-        updateCurrentInput();
-	    updateVisual(locked);
-        
-	}
+        if (text.enabled)
+        {
+            updateDisplay();
+            updateOutput();
+            updateCurrentInput();
+            updateVisual(locked);
+        }
+
+    }
 }

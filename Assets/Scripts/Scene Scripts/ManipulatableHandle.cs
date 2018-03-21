@@ -84,6 +84,7 @@ public class ManipulatableHandle : Handle
                 }
             }
         }
+
         if (triggered)
         {
             if ((left && OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, OVRInput.Controller.LTouch) > 0.11f) ||

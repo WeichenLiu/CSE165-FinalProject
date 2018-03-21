@@ -23,7 +23,7 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1.34
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 1b9f8c43104e75a46becdc2d42ffbd87, type: 2}
@@ -8841,6 +8841,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1424598207}
+  - component: {fileID: 1424598208}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -8865,6 +8866,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1424598208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424598206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7fa541336352cd43b41ab949f461494, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  terminal: {fileID: 1570182857}
+  terminalCable: {fileID: 1235381975}
+  doorCable: {fileID: 1964729807}
+  doorUp: {fileID: 1065611768}
+  doorDown: {fileID: 798547790}
+  card: {fileID: 1363554838}
+  password: {fileID: 1363554840}
+  redCoreActivated: 0
+  greenCoreActivated: 0
+  blueCoreActivated: 0
 --- !u!1 &1432693825 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100054, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
@@ -9495,6 +9517,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   text: {fileID: 452167256}
+  keyboard: {fileID: 1196835506}
   centerCamera: {fileID: 2005030689}
   locked: 1
   count: 5
