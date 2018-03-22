@@ -13,6 +13,11 @@ public class Terminal : MonoBehaviour
     public AudioClip error;
     public AudioClip logon;
 
+    public float shakeTime = 2f;
+    public float darkenTime = 4f;
+    public float subtitleTime = 4f;
+    public bool tempshake = false;
+
     public GameObject lockScreen;
     public GameController gc;
     public Text passwordText;
@@ -39,6 +44,7 @@ public class Terminal : MonoBehaviour
 
     // Prefix of currentInput
     private const string prefix = "tera:~ shin$ ";
+    private bool darken = false;
     private bool sflag = false;
     private float lastTime = 0;
 
@@ -54,7 +60,7 @@ public class Terminal : MonoBehaviour
     private const string doorClose = "CLOSE";
     private const string overridePad = "OVERRIDE";
 
-    private bool doorUnlocked = false;
+    public bool doorUnlocked = false;
 
     // response
     private const string doorOpenBad = "Not Authorized. Please use OVERRIDE to enable the door lock, and the swipe your Staff ID card.";
@@ -97,15 +103,23 @@ public class Terminal : MonoBehaviour
         "Alexandra"
     };
 
+
+    private GlitchEffect ge;
+    private VHSPostProcessEffect ve;
+    private DarkenEffect de;
+
     // Use this for initialization
     void Start () {
+        ge = centerCamera.GetComponent<GlitchEffect>();
+        ve = centerCamera.GetComponent<VHSPostProcessEffect>();
+        de = centerCamera.GetComponent<DarkenEffect>();
         for (int i = 0; i < maxLine; i++)
         {
             display.Add("");
         }
-        keyboard.SetActive(false);
-        lockScreen.SetActive(false);
-        text.enabled = false;
+        //keyboard.SetActive(false);
+        //lockScreen.SetActive(false);
+        //text.enabled = false;
         keyboardAudio.clip = keyboardClick;
         terminalAudio.clip = error;
     }
@@ -312,6 +326,8 @@ public class Terminal : MonoBehaviour
     }
     void processCurrentInput()
     {
+
+        bool valid = true;
         if (locked)
         {
 
@@ -326,6 +342,7 @@ public class Terminal : MonoBehaviour
         }
         else
         {
+            
             display.Add(prefix + currentInput);
             string[] tokens = currentInput.Split(' ');
             switch (tokens[0])
@@ -375,6 +392,7 @@ public class Terminal : MonoBehaviour
                             printList.Clear();
                             insertInput(emailText, true);
                             displayIndex = printList.Count - 1;
+                            StartCoroutine("shakeScreen", Time.time);
                             break;
                         case "JOURNAL1":
 
@@ -388,11 +406,22 @@ public class Terminal : MonoBehaviour
                     insertInput(lsResult);
                     break;
                 default:
+                    valid = false;
                     processUnknownCommand();
                     break;
+
+            }
+            if (!valid)
+            {
+                count--;
+            }
+            else
+            {
+                count = 5;
             }
         }
 
+        
         currentInput = "";
     }
 
@@ -556,34 +585,78 @@ public class Terminal : MonoBehaviour
     void updateVisual(bool flag = true)
     {
 
-        GlitchEffect ge = centerCamera.GetComponent<GlitchEffect>();
-        VHSPostProcessEffect ve = centerCamera.GetComponent<VHSPostProcessEffect>();
-        if (!flag || count > 0)
+        if (!tempshake && !doorUnlocked)
         {
-            ge.enabled = false;
-            ve.enabled = false;
-            return;
-        }
-        if (count <= 0)
-        {
-            ge.enabled = true;
-            float factor = (0 - count) * 0.1f;
-            factor = factor > 0.5f ? 0.5f : factor;
-            ge.intensity = factor;
-            ge.colorIntensity = factor;
-            ge.flipIntensity = factor;
+            if (!flag || count > 0)
+            {
+                ge.enabled = false;
+                ve.enabled = false;
+                return;
+            }
 
-        }
+            if (count <= 0)
+            {
+                ge.enabled = true;
+                float factor = (0 - count) * 0.1f;
+                factor = factor > 0.5f ? 0.5f : factor;
+                ge.intensity = factor;
+                ge.colorIntensity = factor;
+                ge.flipIntensity = factor;
 
-        if (count < -5)
-        {
-            ve.enabled = true;
-            float factor = (-5 - count) * 0.1f;
-            factor = factor > 0.5f ? 0.5f : factor;
-            ve.vratio = factor;
+            }
+
+            if (count < -5)
+            {
+                ve.enabled = true;
+                float factor = (-5 - count) * 0.1f;
+                factor = factor > 0.5f ? 0.5f : factor;
+                ve.vratio = factor;
+            }
+
+            if (count < -10 && !darken)
+            {
+                de.enabled = true;
+                StartCoroutine("darkenScreen", Time.time);
+            }
         }
     }
 
+
+    IEnumerator darkenScreen(float start)
+    {
+        while (Time.time - start < darkenTime)
+        {
+            de.ratio = (darkenTime - (Time.time - start)) / darkenTime;
+            yield return null;
+        }
+
+        de.ratio = 0;
+        while (Time.time - start < darkenTime + subtitleTime)
+        {
+            de.tratio = ((Time.time - start - darkenTime)) / subtitleTime;
+            yield return null;
+        }
+
+        de.tratio = 1;
+    }
+
+    IEnumerator shakeScreen(float start)
+    {
+        tempshake = true;
+        ge.enabled = true;
+        float factor = 1f;
+        ge.intensity = factor;
+        ge.colorIntensity = factor;
+        ge.flipIntensity = factor;
+
+        while (Time.time - start < shakeTime)
+        {
+            yield return null;
+        }
+
+        ge.enabled = false;
+        tempshake = false;
+    }
 
     // Update is called once per frame
     void Update () {

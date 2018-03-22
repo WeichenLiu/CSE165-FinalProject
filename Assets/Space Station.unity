@@ -283,7 +283,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.22
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -302,7 +302,7 @@ Light:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_Lightmapping: 2
+  m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
@@ -502,7 +502,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 2
 --- !u!114 &127156959
 MonoBehaviour:
@@ -580,7 +580,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127156957}
   m_LocalRotation: {x: 0, y: -0.7490136, z: 0, w: -0.6625547}
-  m_LocalPosition: {x: 0.71, y: 0.72, z: 0.68}
+  m_LocalPosition: {x: -1.9, y: 1.081, z: 4.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1385763769}
@@ -639,7 +639,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127156957}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b58a0c7ef421fcf4198f47dbab4cee11, type: 3}
   m_Name: 
@@ -872,6 +872,55 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224464531184780612, guid: 4908cd58a36929f4ba30e67dc09e6279,
     type: 2}
   m_PrefabInternal: {fileID: 162902194}
+--- !u!1 &278326339 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100070, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+  m_PrefabInternal: {fileID: 1363554699}
+--- !u!54 &278326341
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 278326339}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 1
+  m_Constraints: 0
+  m_CollisionDetection: 1
+--- !u!114 &278326342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 278326339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e06b583a66fb124ebcc8a3be629f72e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 127156957}
+  doorUp: {fileID: 1065611768}
+  doorDown: {fileID: 798547790}
+  camera: {fileID: 2005030689}
+  speed: 0.05
+  duration: 6
+  darkenDuration: 3
+--- !u!65 &278326343
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 278326339}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.404776, y: 0.05293601, z: 0.049100813}
+  m_Center: {x: 0.20732023, y: -0.2251097, z: 0.029724775}
 --- !u!1001 &347725970
 Prefab:
   m_ObjectHideFlags: 0
@@ -1491,7 +1540,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.96
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -2456,7 +2505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c61a68117e80be4890f08602386142b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  terminal: {fileID: 0}
+  terminal: {fileID: 1570182857}
   Card: {fileID: 1363554838}
   ActivateDistance: 0.3
   Controller: {fileID: 1424598208}
@@ -6837,7 +6886,7 @@ Prefab:
     - target: {fileID: 2300068, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 1c171fa8ca06b2541ac6506b55bafe1e, type: 2}
+      objectReference: {fileID: 2100000, guid: 95f4a7d8d9b497e4a910e1bdb15cd6e3, type: 2}
     - target: {fileID: 2300046, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7686,6 +7735,10 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 95f4a7d8d9b497e4a910e1bdb15cd6e3, type: 2}
+    - target: {fileID: 2300068, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}
   m_IsPrefabParent: 0
@@ -10946,7 +10999,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1424598206}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: db6fd8b047f7e8944acee482ab5ea2d5, type: 3}
   m_Name: 
@@ -11513,7 +11566,7 @@ Light:
   serializedVersion: 8
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.96
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -11670,6 +11723,10 @@ MonoBehaviour:
   keyboardClick: {fileID: 8300000, guid: 9d4b64499b59d674498721959d3267a2, type: 3}
   error: {fileID: 8300000, guid: c442743fcdb83654087fe45c1c69f514, type: 3}
   logon: {fileID: 8300000, guid: 6c4a9bd3010dd4240b55c12054cff480, type: 3}
+  shakeTime: 2
+  darkenTime: 4
+  subtitleTime: 4
+  tempshake: 0
   lockScreen: {fileID: 1885763227}
   gc: {fileID: 1424598208}
   passwordText: {fileID: 1940873741}
@@ -11688,6 +11745,7 @@ MonoBehaviour:
   printList: []
   current: []
   currentInput: 
+  doorUnlocked: 0
 --- !u!1 &1619709831
 GameObject:
   m_ObjectHideFlags: 0
