@@ -10720,9 +10720,9 @@ MonoBehaviour:
   doorDown: {fileID: 798547790}
   card: {fileID: 1363554838}
   password: {fileID: 1363554840}
-  displayPowerOffUI: {fileID: 0}
-  controlPowerOffUI: {fileID: 0}
-  lockPowerOffUI: {fileID: 0}
+  displayPowerOffUI: {fileID: 956927492}
+  controlPowerOffUI: {fileID: 1189484596}
+  lockPowerOffUI: {fileID: 1352331559}
   redCoreActivated: 0
   greenCoreActivated: 0
   blueCoreActivated: 0
