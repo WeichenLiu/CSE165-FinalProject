@@ -909,6 +909,7 @@ MonoBehaviour:
   speed: 0.05
   duration: 6
   darkenDuration: 3
+  subtitleDuration: 4
 --- !u!65 &278326343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14315,7 +14316,7 @@ MonoBehaviour:
   VHS: {fileID: 15200000, guid: 324a486eb541aa848884bad1ebd7b5e6, type: 3}
   mratio: 1
   vratio: 1
-  scanlineRange: 0
+  scanlineRange: 1
 --- !u!114 &2005030699
 MonoBehaviour:
   m_ObjectHideFlags: 0

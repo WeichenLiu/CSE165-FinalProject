@@ -385,7 +385,10 @@ public class Terminal : MonoBehaviour
                     switch (tokens[1])
                     {
                         case "INFO":
-                            
+                            printMode = true;
+                            printList.Clear();
+                            insertInput(infoText, true);
+                            displayIndex = printList.Count - 1;
                             break;
                         case "EMAIL":
                             printMode = true;

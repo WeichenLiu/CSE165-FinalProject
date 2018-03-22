@@ -15,6 +15,7 @@ public class TransformHandle : MonoBehaviour
     public float speed = 0.05f;
     public float duration = 6.0f;
     public float darkenDuration = 3f;
+    public float subtitleDuration = 4.0f;
 
     private Vector3 pivotPos;
     private int handIndex = -1;
@@ -108,5 +109,17 @@ public class TransformHandle : MonoBehaviour
         }
 
         de.ratio = 0;
+        VHSPostProcessEffect ve = camera.GetComponent<VHSPostProcessEffect>();
+        ve.enabled = true;
+        ve.mratio = 1.0f;
+        ve.vratio = 1.0f;
+
+        while (Time.time - start < darkenDuration + subtitleDuration)
+        {
+            de.tratio = ((Time.time - start - darkenDuration)) / subtitleDuration;
+            yield return null;
+        }
+
+        de.tratio = 1;
     }
 }
