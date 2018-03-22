@@ -102,7 +102,21 @@ public class Terminal : MonoBehaviour
         "Regards,",
         "Alexandra"
     };
-
+    private string[] journal1Text =
+    {
+        "I fin0?ly g0t her3. This has long been my dream. I'm feeling s0 good. I *$* _#(%)$@ )UGJ)DF T($*U*$@JAOZ DIFJ((*$T. ",
+        "The answer that came to me again and again was play.",
+        "In the beginning were the words, and the words made the world, I am the words the words are everything.",
+        "Every intelligent species on Earth is attracted by here. I'm so glad I finally become one of THEM."
+    };
+    private string[] journal2Text =
+    {
+        "NOOOOOOOOOOOOOOOOOOOOO! This is not what I want! You don't have to sacrifice me. I am who I am.",
+        "I have my own ghost, my memory, my identity!",
+        "You are not going to take them from me!",
+        "NOOOOoOoooOOOOooOOoooOOOooOOOoooooOOoo",
+        "#*R(*DU IFH(H USGH IDU FAU()) RUG(*G(SH VXCIUV (* $( *$!^ $T*)(!)"
+    };
 
     private GlitchEffect ge;
     private VHSPostProcessEffect ve;
@@ -398,10 +412,17 @@ public class Terminal : MonoBehaviour
                             StartCoroutine("shakeScreen", Time.time);
                             break;
                         case "JOURNAL1":
-
+                            printMode = true;
+                            printList.Clear();
+                            insertInput(journal1Text, true);
+                            displayIndex = printList.Count - 1;
                             break;
                         case "JOURNAL2":
-
+                            printMode = true;
+                            printList.Clear();
+                            insertInput(journal2Text, true);
+                            displayIndex = printList.Count - 1;
+                            StartCoroutine("shakeScreen", Time.time);
                             break;
                     }
                     break;
