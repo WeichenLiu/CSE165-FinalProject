@@ -579,15 +579,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127156957}
-  m_LocalRotation: {x: 0, y: -0.7490136, z: 0, w: -0.6625547}
-  m_LocalPosition: {x: -1.9, y: 1.081, z: 4.044}
+  m_LocalRotation: {x: 0, y: -0.9805119, z: 0, w: -0.19645981}
+  m_LocalPosition: {x: -0.93, y: 1.081, z: 4.044}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1385763769}
   - {fileID: 411362305}
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 457.01, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 517.34, z: 0}
 --- !u!114 &127156963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2516,6 +2516,7 @@ MonoBehaviour:
   DisableColor: {r: 0.1544118, g: 0.1544118, b: 0.1544118, a: 0.884}
   NormalColor: {r: 0.007843138, g: 0.34117648, b: 1, a: 0.47843137}
   ActivatedColor: {r: 0.042055637, g: 1, b: 0.007843137, a: 0.47843137}
+  on: 0
 --- !u!82 &618379705
 AudioSource:
   m_ObjectHideFlags: 0
