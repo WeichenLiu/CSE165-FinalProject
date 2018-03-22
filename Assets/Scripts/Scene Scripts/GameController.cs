@@ -13,6 +13,11 @@ public class GameController : MonoBehaviour
     public Door doorDown;
     public GameObject card;
     public GameObject password;
+
+    public GameObject displayPowerOffUI;
+    public GameObject controlPowerOffUI;
+    public GameObject lockPowerOffUI;
+
     public bool redCoreActivated = false;
     public bool greenCoreActivated = false;
     public bool blueCoreActivated = false;
@@ -49,6 +54,12 @@ public class GameController : MonoBehaviour
     {
         if (redCoreActivated && blueCoreActivated && greenCoreActivated)
         {
+            // First disable all power off UIs
+            displayPowerOffUI.SetActive(false);
+            controlPowerOffUI.SetActive(false);
+            lockPowerOffUI.SetActive(false);
+
+            // Do terminal related stuffs
             terminal.enableDisplay();
             terminalCable.activate();
         }
