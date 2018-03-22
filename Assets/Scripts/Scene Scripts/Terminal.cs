@@ -246,14 +246,13 @@ public class Terminal : MonoBehaviour
         {
             
             display.Add(prefix + currentInput);
-            if (currentInput == door)
-            {
-                doorFunction = !doorFunction;
-            }
-            else if(doorFunction)
+            if(doorFunction)
             {
                 switch (currentInput)
                 {
+                    case door:
+                        doorFunction = !doorFunction;
+                        break;
                     case open:
                         // or not
                         gc.openDoor();
@@ -271,6 +270,16 @@ public class Terminal : MonoBehaviour
                         doorFunction = false;
                         processUnknownCommand();
                         break;
+                }
+            }
+            else
+            {
+                switch (currentInput)
+                {
+                    case door:
+                        doorFunction = !doorFunction;
+                        break;
+
                 }
             }
             

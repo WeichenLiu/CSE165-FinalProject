@@ -8,6 +8,6 @@ PhysicMaterial:
   m_Name: Bouncy Cube
   dynamicFriction: 50
   staticFriction: 50
-  bounciness: 0.1
+  bounciness: 0.03
   frictionCombine: 2
   bounceCombine: 2
