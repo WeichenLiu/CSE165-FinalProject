@@ -2509,7 +2509,7 @@ MonoBehaviour:
   Card: {fileID: 1363554838}
   ActivateDistance: 0.3
   Controller: {fileID: 1424598208}
-  ActivateTime: 2
+  ActivateTime: 5
   Background: {fileID: 1722966514}
   LockImage: {fileID: 1018121199}
   CardImage: {fileID: 359400442}

@@ -20,9 +20,9 @@ public class DoorLock : MonoBehaviour
     public Color NormalColor;
     public Color ActivatedColor;
 
-    private bool activated;
-    private bool on;
-    private bool hovering;
+    private bool activated = false;
+    public bool on = false;
+    private bool hovering = false;
     private AudioSource doorLockAudio;
 
     // Use this for initialization
@@ -39,7 +39,7 @@ public class DoorLock : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
-        if (!hovering && GetDistance() < ActivateDistance)
+        if (on && !hovering && GetDistance() < ActivateDistance)
         {
             hovering = true;
             if (!activated)
@@ -47,7 +47,7 @@ public class DoorLock : MonoBehaviour
                 Activate();
             }
         }
-        else if (hovering && GetDistance() >= ActivateDistance)
+        else if (on && hovering && GetDistance() >= ActivateDistance)
         {
             hovering = false;
         }
@@ -75,6 +75,7 @@ public class DoorLock : MonoBehaviour
         activated = true;
         Controller.openDoor();
         terminal.setDoorUnlocked();
+        Background.color = ActivatedColor;
         StartCoroutine("ActivateUI", Time.time);
     }
 
@@ -82,7 +83,6 @@ public class DoorLock : MonoBehaviour
     {
         while (Time.time - startTime < ActivateTime)
         {
-            Background.color = ActivatedColor;
             yield return null;
         }
         Background.color = NormalColor;
