@@ -11601,7 +11601,11 @@ MonoBehaviour:
   count: 5
   switchTime: 1
   maxLine: 14
+  maxPrint: 120
+  displayIndex: 0
+  printMode: 0
   display: []
+  printList: []
   current: []
   currentInput: 
 --- !u!1 &1619709831

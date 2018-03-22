@@ -26,7 +26,11 @@ public class Terminal : MonoBehaviour
     public float switchTime = 1.0f;
 
     public int maxLine = 14;
+    public int maxPrint = 200;
+    public int displayIndex = 0;
+    public bool printMode = false;
     public List<string> display;
+    public List<string> printList;
     public List<string> current;
 
     public string currentInput = "";
@@ -61,15 +65,36 @@ public class Terminal : MonoBehaviour
 
     private string[] lsResult =
     {
-        "-rw-@ shintaro staff Jan  1  6:00 INFO.TXT",
-        "-rw-@ root     staff Jan  6 14:42 JOURNAL1.TXT",
-        "-rw-@ root     staff Jan 12 21:20 JOURNAL2.TXT",
-        "-rw-@ root     staff Jan 13 19:15 JOURNAL3.TXT"
+        "-rw-@ shintaro staff Jan  1  6:00 INFO",
+        "-rw-@ root     staff Jan  6 14:42 JOURNAL1",
+        "-rw-@ root     staff Jan 12 21:20 JOURNAL2",
+        "-rw-@ root     staff Jan 13 19:15 JOURNAL3"
     };
 
+    private const string printModeHelp = "<ENTER> exit; <8> scroll up; <2> scroll down";
+
     private string[] login = { "Login successfully. Welcome Home.", "Type HELP for available commands." };
-    private string[] doorHelp = { "Door Utilities: ", " - door open - Open the door", " - door close - Close the door" };
+    private string[] doorHelp = { "Door Utilities: ", " - DOOR OPEN - Open the door", " - DOOR CLOSE - Close the door" };
     private string[] helpText = { "Available Commands: ", " - DOOR: Door Utilities", " - LS: List the files", " - PRINT [FILE]: Show the content of a file" };
+    private string[] journal1 = {"From: Alexandra Drennan",
+
+        "To: Noematics Mailing List",
+
+        "Subject: [NML]",
+        "Talos Principle",
+        "Have you heard of the Talos Principle? It's this old philosophical concept about the impossibility of avoiding reality - no matter what you believe, if you lose your blood, you will die. I think that applies to our situation more than we'd like to admit.We could close our eyes and pretend that everything's going to be all right... but it won't change the physical reality of what's going to happen to our 4E 6F 20 6D 61 6E 20 69",
+        
+        "I think that, as scientists, it is our duty to face the truth, and to ask ourselves the most important question: how can we help?",
+        
+        "73 20 6C 69 62 65 72 61 74 65 64 20 66 72 6F 6D 20 66 65 61 72 20 77 68 6F 20 64 61 72 65 20 6E 6F 74 20 73 65 65 20 68 69 73",
+        
+        "20 70 6C 61 63 65 20 69 6E 20 74 68 65 20 77 6F 72 6C 64 20 61 73 20 69 74 20 69 73 3B 20 6E 6F 20 6D 61 6E 20 63 61 6E 20 61 63 68 69 65 76 65 20 74 I think I have an idea 68 65 20 67 72 65 61 74 6E 65 73 73 20 6F 66 20 77 68 69 63 68 20 68 65 20 69 73 20 63 61 70 61 62 6C 65 20 75 6E 74 69 6C 20",
+        
+        "68 65 20 68 61 73 20 61 6C 6C 6F 77 65 64 20 68 69 6D 73 65 6C 66 20 74 6F 20 73 65 65 20 68 69 73 20 6F 77 6E 20 6C 69 74 74 6C 65 6E 65 73 73 2E 20",
+        
+        "Regards,",
+        
+        "Alexandra"};
 
     // Use this for initialization
     void Start () {
@@ -92,12 +117,56 @@ public class Terminal : MonoBehaviour
         text.enabled = flag;
     }
 
+    void scrollUp(bool up = true)
+    {
+        if (up)
+        {
+            displayIndex++;
+            if (displayIndex >= printList.Count)
+            {
+                displayIndex = printList.Count - 1;
+            }
+        }
+        else
+        {
+            displayIndex--;
+            if (displayIndex < 0)
+            {
+                displayIndex = 0;
+            }
+        }
+    }
+
     public void input(string s)
     {
         playKeyboard();
         if (!locked)
         {
-            if (s[0] == '<') // <>
+            if (printMode)
+            {
+                currentInput = printModeHelp;
+                if (s[0] == '<')
+                {
+                    if (s.Contains("Enter"))
+                    {
+                        printMode = false;
+                        currentInput = "";
+                    }
+                }
+                else
+                {
+                    switch (s)
+                    {
+                        case "2":
+                            scrollUp(false);
+                            break;
+                        case "8":
+                            scrollUp();
+                            break;
+                    }
+                }
+            }
+            else if (s[0] == '<') // <>
             {
                 if (s.Contains("Backspace"))
                 {
@@ -125,8 +194,6 @@ public class Terminal : MonoBehaviour
                 {
                     processCurrentInput();
                 }
-
-
             }
             else
             {
@@ -262,9 +329,6 @@ public class Terminal : MonoBehaviour
             string[] tokens = currentInput.Split(' ');
             switch (tokens[0])
             {
-                case door:
-                    insertInput(doorHelp);
-                    break;
                 case open:
                     if (doorUnlocked)
                     {
@@ -280,6 +344,9 @@ public class Terminal : MonoBehaviour
                     gc.openDoor(false);
                     insertInput(doorClosed);
                     break;
+                case door:
+                    insertInput(doorHelp);
+                    break;
                 case overridePad:
                     gc.activateDoorLock();
                     insertInput(overridePanel);
@@ -290,16 +357,19 @@ public class Terminal : MonoBehaviour
                 case print:
                     switch (tokens[1])
                     {
-                        case "INFO.TXT":
+                        case "INFO":
                             
                             break;
-                        case "JOURNAL1.TXT":
+                        case "JOURNAL1":
+                            printMode = true;
+                            printList.Clear();
+                            insertInput(journal1, true);
+                            displayIndex = printList.Count - 1;
+                            break;
+                        case "JOURNAL2":
 
                             break;
-                        case "JOURNAL2.TXT":
-
-                            break;
-                        case "JOURNAL3.TXT":
+                        case "JOURNAL3":
 
                             break;
                     }
@@ -316,7 +386,7 @@ public class Terminal : MonoBehaviour
         currentInput = "";
     }
 
-    void insertInput(string s)
+    void insertInput(string s, bool print = false)
     {
         string curr = "";
         string next = "";
@@ -330,7 +400,16 @@ public class Terminal : MonoBehaviour
             }
             curr = s.Substring(0, index);
             next = s.Substring(index);
-            display.Add(curr);
+            if (print)
+            {
+                printList.Add(curr);
+            }
+            else
+            {
+                display.Add(curr); 
+
+            }
+            
             while (next.Length > 50)
             {
                 index = 50;
@@ -341,34 +420,83 @@ public class Terminal : MonoBehaviour
                 }
                 curr = next.Substring(0, index);
                 next = next.Substring(index);
-                display.Add(curr);
+                if (print)
+                {
+                    printList.Add(curr);
+                }
+                else
+                {
+                    display.Add(curr);
+
+                }
             }
-            display.Add(next);
+            if (print)
+            {
+                printList.Add(next);
+            }
+            else
+            {
+                display.Add(next);
+
+            }
         }
         else
         {
             curr += s;
-            display.Add(curr);
+            if (print)
+            {
+                printList.Add(curr);
+            }
+            else
+            {
+                display.Add(curr);
+
+            }
         }
     }
 
-    void insertInput(string[] ss)
+    void insertInput(string[] ss, bool print = false)
     {
         for (int i = 0; i < ss.Length; i++)
         {
-            insertInput(ss[i]);
+            insertInput(ss[i], print);
         }
     }
 
     void updateDisplay()
     {
-        while (display.Count > maxLine)
+        if (printMode)
         {
-            display.RemoveAt(0);
+            while (printList.Count > maxPrint)
+            {
+                printList.RemoveAt(0);
+            }
+            current.Clear();
+            int j = printList.Count - displayIndex;
+            for (int i = 0; i < maxLine; i++)
+            {
+                if (j < printList.Count)
+                {
+                    current.Add(printList[j]);
+                }
+                else
+                {
+                    current.Add("");
+                }
+
+                j++;
+            }
         }
-        
-        current.Clear();
-        current.InsertRange(0, display);
+        else
+        {
+            while (display.Count > maxLine)
+            {
+                display.RemoveAt(0);
+            }
+
+            current.Clear();
+            current.InsertRange(0, display);
+        }
     }
 
     void updateOutput()
@@ -384,27 +512,34 @@ public class Terminal : MonoBehaviour
 
     void updateCurrentInput()
     {
-        string s = prefix;
-        s += currentInput;
-        if (sflag)
+        if (printMode)
         {
-            s += "|";
-            if (Time.time - lastTime > switchTime)
-            {
-                sflag = false;
-                lastTime = Time.time;
-            }
+            text.text += printModeHelp;
         }
         else
         {
-            if (Time.time - lastTime > switchTime)
+            string s = prefix;
+            s += currentInput;
+            if (sflag)
             {
-                sflag = true;
-                lastTime = Time.time;
+                s += "|";
+                if (Time.time - lastTime > switchTime)
+                {
+                    sflag = false;
+                    lastTime = Time.time;
+                }
             }
-        }
+            else
+            {
+                if (Time.time - lastTime > switchTime)
+                {
+                    sflag = true;
+                    lastTime = Time.time;
+                }
+            }
 
-        text.text += s;
+            text.text += s;
+        }
     }
 
 
