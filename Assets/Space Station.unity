@@ -526,7 +526,7 @@ MonoBehaviour:
   lastPosR: {x: 0, y: 0, z: 0}
   vel0: {x: 0, y: 0, z: 0}
   breakForce: 10
-  speed: 0.1
+  speed: 0.05
   lastCol: {fileID: 0}
   lastCollision: 0
   collisionThres: 1.2
