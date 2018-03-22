@@ -29,9 +29,7 @@ public class Door : MonoBehaviour
         opened = flag;
         StartCoroutine("OpenOverTime", Time.time);
     }
-
     
-
     IEnumerator OpenOverTime(float start)
     {
         while (Time.time - start < time)

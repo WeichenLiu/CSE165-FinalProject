@@ -34,7 +34,7 @@ public class Terminal : MonoBehaviour
     private string passwordInput = "";
 
     // Prefix of currentInput
-    private const string prefix = "shintaro@ttl1 $ ";
+    private const string prefix = "tera:~ shin$ ";
     private bool sflag = false;
     private float lastTime = 0;
 
@@ -42,24 +42,34 @@ public class Terminal : MonoBehaviour
     private const string password = "VIRTUA1";
     // Command
     private const string ls = "LS";
-    private const string cat = "CAT";
+    private const string print = "PRINT";
     private const string help = "HELP";
     //
-    private const string open = "OPEN";
     private const string door = "DOOR";
-    private const string close = "CLOSE";
-    private const string overridePad = "OVERRIDE";
+    private const string open = "DOOR OPEN";
+    private const string close = "DOOR CLOSE";
+    private const string overridePad = "DOOR OVERRIDE";
 
-    
-
-    private bool doorFunction = false;
+    private bool doorUnlocked = false;
 
     // response
-    private const string login = "";
-    private const string doorOpened = "Door is opened. Have a nice day.";
+    private const string doorOpenBad = "Not Authorized. Please use OVERRIDE to enable the door lock, and the swipe your Staff ID card.";
+    private const string doorOpenGood = "Door is opened. Have a nice day.";
     private const string doorClosed = "Door is closed.";
     private const string overridePanel = "Override panel enable. Please swipe your card to manual open the door.";
     private const string unknownCommand = "Unknown command. Please use \"HELP\" to check for available command.";
+
+    private string[] lsResult =
+    {
+        "-rw-@ shintaro staff Jan  1  6:00 INFO.TXT",
+        "-rw-@ root     staff Jan  6 14:42 JOURNAL1.TXT",
+        "-rw-@ root     staff Jan 12 21:20 JOURNAL2.TXT",
+        "-rw-@ root     staff Jan 13 19:15 JOURNAL3.TXT"
+    };
+
+    private string[] login = { "Login successfully. Welcome Home.", "Type HELP for available commands." };
+    private string[] doorHelp = { "Door Utilities: ", " - door open - Open the door", " - door close - Close the door" };
+    private string[] helpText = { "Available Commands: ", " - DOOR: Door Utilities", " - LS: List the files", " - PRINT [FILE]: Show the content of a file" };
 
     // Use this for initialization
     void Start () {
@@ -194,7 +204,7 @@ public class Terminal : MonoBehaviour
         locked = false;
         lockScreen.SetActive(false);
         playLogon();
-        insertInput("Login successfully. Welcome Home.");
+        insertInput(login);
     }
 
     void playError()
@@ -222,6 +232,10 @@ public class Terminal : MonoBehaviour
         count--;
     }
 
+    public void setDoorUnlocked()
+    {
+        doorUnlocked = true;
+    }
 
     void processUnknownCommand()
     {
@@ -244,45 +258,59 @@ public class Terminal : MonoBehaviour
         }
         else
         {
-            
             display.Add(prefix + currentInput);
-            if(doorFunction)
+            string[] tokens = currentInput.Split(' ');
+            switch (tokens[0])
             {
-                switch (currentInput)
-                {
-                    case door:
-                        doorFunction = !doorFunction;
-                        break;
-                    case open:
-                        // or not
+                case door:
+                    insertInput(doorHelp);
+                    break;
+                case open:
+                    if (doorUnlocked)
+                    {
                         gc.openDoor();
-                        insertInput(doorOpened);
-                        break;
-                    case close:
-                        gc.openDoor(false);
-                        insertInput(doorClosed);
-                        break;
-                    case overridePad:
-                        gc.activateDoorLock();
-                        insertInput(overridePanel);
-                        break;
-                    default:
-                        doorFunction = false;
-                        processUnknownCommand();
-                        break;
-                }
-            }
-            else
-            {
-                switch (currentInput)
-                {
-                    case door:
-                        doorFunction = !doorFunction;
-                        break;
+                        insertInput(doorOpenGood);
+                    }
+                    else
+                    {
+                        insertInput(doorOpenBad);
+                    }
+                    break;
+                case close:
+                    gc.openDoor(false);
+                    insertInput(doorClosed);
+                    break;
+                case overridePad:
+                    gc.activateDoorLock();
+                    insertInput(overridePanel);
+                    break;
+                case help:
+                    insertInput(helpText);
+                    break;
+                case print:
+                    switch (tokens[1])
+                    {
+                        case "INFO.TXT":
+                            
+                            break;
+                        case "JOURNAL1.TXT":
 
-                }
+                            break;
+                        case "JOURNAL2.TXT":
+
+                            break;
+                        case "JOURNAL3.TXT":
+
+                            break;
+                    }
+                    break;
+                case ls:
+                    insertInput(lsResult);
+                    break;
+                default:
+                    processUnknownCommand();
+                    break;
             }
-            
         }
 
         currentInput = "";
@@ -324,16 +352,21 @@ public class Terminal : MonoBehaviour
         }
     }
 
+    void insertInput(string[] ss)
+    {
+        for (int i = 0; i < ss.Length; i++)
+        {
+            insertInput(ss[i]);
+        }
+    }
+
     void updateDisplay()
     {
         while (display.Count > maxLine)
         {
             display.RemoveAt(0);
         }
-
-
-
-
+        
         current.Clear();
         current.InsertRange(0, display);
     }

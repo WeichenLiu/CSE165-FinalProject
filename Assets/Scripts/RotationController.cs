@@ -23,15 +23,15 @@ public class RotationController : MonoBehaviour
 	void Update () {
 	    if (!triggerPressed())
 	    {
-	        Vector2 t = (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.RTouch);
+            Vector2 t = (OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, OVRInput.Controller.RTouch));
 	        if (t.magnitude > 0.001f)
 	        {
                 player.angularVelocity = Vector3.zero;
 	            player.inertiaTensor = Vector3.zero;
                 player.inertiaTensorRotation = Quaternion.identity;
 	            Vector3 currentRot = player.transform.localRotation.eulerAngles;
-                current
-                player.MoveRotation();
+                // current
+                // player.MoveRotation();
 	        }
 	    }
 	}

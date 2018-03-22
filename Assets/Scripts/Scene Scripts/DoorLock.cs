@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DoorLock : MonoBehaviour
 {
 
-    
+    public Terminal terminal;
     public GameObject Card;
     public float ActivateDistance;
     public GameController Controller;
@@ -74,6 +74,7 @@ public class DoorLock : MonoBehaviour
         doorLockAudio.Play();
         activated = true;
         Controller.openDoor();
+        terminal.setDoorUnlocked();
         StartCoroutine("ActivateUI", Time.time);
     }
 
