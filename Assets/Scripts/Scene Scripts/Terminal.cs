@@ -424,6 +424,10 @@ public class Terminal : MonoBehaviour
                             displayIndex = printList.Count - 1;
                             StartCoroutine("shakeScreen", Time.time);
                             break;
+                        default:
+                            playError();
+                            insertInput("No such file or directory");
+                            break;
                     }
                     break;
                 case ls:
