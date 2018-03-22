@@ -479,6 +479,9 @@ GameObject:
   - component: {fileID: 127156959}
   - component: {fileID: 127156963}
   - component: {fileID: 127156960}
+  - component: {fileID: 127156964}
+  - component: {fileID: 127156965}
+  - component: {fileID: 127156966}
   m_Layer: 0
   m_Name: player
   m_TagString: Untagged
@@ -598,6 +601,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   down: {fileID: 1964729807}
   up: {fileID: 1235381975}
+--- !u!114 &127156964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127156957}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58a0c7ef421fcf4198f47dbab4cee11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRotation: {x: 0, y: 0, z: 0.32, w: 0}
+  endRotation: {x: 0, y: 0, z: 0, w: 0.27}
+  startPosition: {x: -0.4, y: 0.7, z: 7}
+  endPosition: {x: -0.4, y: 0.7, z: -2}
+  duration: 50
+--- !u!114 &127156965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127156957}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58a0c7ef421fcf4198f47dbab4cee11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRotation: {x: 0, y: 1.5707964, z: 0, w: 0}
+  endRotation: {x: 0, y: 1.5707964, z: 0, w: 0}
+  startPosition: {x: -0.4, y: 0.7, z: 2}
+  endPosition: {x: -0.4, y: 0.7, z: -2}
+  duration: 40
+--- !u!114 &127156966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127156957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b58a0c7ef421fcf4198f47dbab4cee11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startRotation: {x: 0, y: 0, z: 0, w: 1.22}
+  endRotation: {x: 0, y: 0.38, z: 0, w: -0.21}
+  startPosition: {x: 0.85, y: 0.2, z: 3.5}
+  endPosition: {x: 0.85, y: 0.2, z: 3.5}
+  duration: 25
 --- !u!1 &156604528
 GameObject:
   m_ObjectHideFlags: 0
@@ -10837,6 +10888,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1424598207}
   - component: {fileID: 1424598208}
+  - component: {fileID: 1424598209}
+  - component: {fileID: 1424598210}
   m_Layer: 0
   m_Name: Scene
   m_TagString: Untagged
@@ -10887,6 +10940,33 @@ MonoBehaviour:
   redCoreActivated: 0
   greenCoreActivated: 0
   blueCoreActivated: 0
+--- !u!114 &1424598209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424598206}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db6fd8b047f7e8944acee482ab5ea2d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 1424598208}
+  open: 0
+--- !u!114 &1424598210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1424598206}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a0fbc84ef3ac1147ae4779a0598bb67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 1424598208}
+  OpenDelay: 20
+  CloseDelay: 29
 --- !u!1 &1432693825 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100054, guid: f51ab5f79e8c11b458b61e47e1e2ce9f, type: 3}

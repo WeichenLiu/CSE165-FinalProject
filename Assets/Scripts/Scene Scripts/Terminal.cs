@@ -50,9 +50,9 @@ public class Terminal : MonoBehaviour
     private const string help = "HELP";
     //
     private const string door = "DOOR";
-    private const string open = "DOOR OPEN";
-    private const string close = "DOOR CLOSE";
-    private const string overridePad = "DOOR OVERRIDE";
+    private const string doorOpen = "OPEN";
+    private const string doorClose = "CLOSE";
+    private const string overridePad = "OVERRIDE";
 
     private bool doorUnlocked = false;
 
@@ -66,35 +66,36 @@ public class Terminal : MonoBehaviour
     private string[] lsResult =
     {
         "-rw-@ shintaro staff Jan  1  6:00 INFO",
-        "-rw-@ root     staff Jan  6 14:42 JOURNAL1",
-        "-rw-@ root     staff Jan 12 21:20 JOURNAL2",
-        "-rw-@ root     staff Jan 13 19:15 JOURNAL3"
+        "-rw-@ root     staff Jan  6 14:42 EMAIL",
+        "-rw-@ root     staff Jan 12 21:20 JOURNAL1",
+        "-rw-@ root     staff Jan 13 19:15 JOURNAL2"
     };
 
     private const string printModeHelp = "<ENTER> exit; <8> scroll up; <2> scroll down";
 
     private string[] login = { "Login successfully. Welcome Home.", "Type HELP for available commands." };
-    private string[] doorHelp = { "Door Utilities: ", " - DOOR OPEN - Open the door", " - DOOR CLOSE - Close the door" };
+    private string[] doorHelp = { "Door Utilities. Usage: ", " - DOOR OPEN - Open the door", " - DOOR CLOSE - Close the door" };
     private string[] helpText = { "Available Commands: ", " - DOOR: Door Utilities", " - LS: List the files", " - PRINT [FILE]: Show the content of a file" };
-    private string[] journal1 = {"From: Alexandra Drennan",
-
+    private string[] infoText =
+    {
+        "Name: Kisaragi Shintaro",
+        "Role: Programmer & Designer",
+        "Gender: Male",
+        "Age: 21",
+        "Description: Genius Undergraduate Who Might Be Capable to Operate Human Reborn Project [Virtua1]"
+    };
+    private string[] emailText = {"From: Alexandra Drennan",
         "To: Noematics Mailing List",
-
         "Subject: [NML]",
         "Talos Principle",
         "Have you heard of the Talos Principle? It's this old philosophical concept about the impossibility of avoiding reality - no matter what you believe, if you lose your blood, you will die. I think that applies to our situation more than we'd like to admit.We could close our eyes and pretend that everything's going to be all right... but it won't change the physical reality of what's going to happen to our 4E 6F 20 6D 61 6E 20 69",
-        
         "I think that, as scientists, it is our duty to face the truth, and to ask ourselves the most important question: how can we help?",
-        
         "73 20 6C 69 62 65 72 61 74 65 64 20 66 72 6F 6D 20 66 65 61 72 20 77 68 6F 20 64 61 72 65 20 6E 6F 74 20 73 65 65 20 68 69 73",
-        
         "20 70 6C 61 63 65 20 69 6E 20 74 68 65 20 77 6F 72 6C 64 20 61 73 20 69 74 20 69 73 3B 20 6E 6F 20 6D 61 6E 20 63 61 6E 20 61 63 68 69 65 76 65 20 74 I think I have an idea 68 65 20 67 72 65 61 74 6E 65 73 73 20 6F 66 20 77 68 69 63 68 20 68 65 20 69 73 20 63 61 70 61 62 6C 65 20 75 6E 74 69 6C 20",
-        
         "68 65 20 68 61 73 20 61 6C 6C 6F 77 65 64 20 68 69 6D 73 65 6C 66 20 74 6F 20 73 65 65 20 68 69 73 20 6F 77 6E 20 6C 69 74 74 6C 65 6E 65 73 73 2E 20",
-        
         "Regards,",
-        
-        "Alexandra"};
+        "Alexandra"
+    };
 
     // Use this for initialization
     void Start () {
@@ -329,23 +330,32 @@ public class Terminal : MonoBehaviour
             string[] tokens = currentInput.Split(' ');
             switch (tokens[0])
             {
-                case open:
-                    if (doorUnlocked)
+                case door:
+                    if (tokens.Length == 1)
                     {
-                        gc.openDoor();
-                        insertInput(doorOpenGood);
+                        insertInput(doorHelp);
                     }
                     else
                     {
-                        insertInput(doorOpenBad);
+                        switch (tokens[1])
+                        {
+                            case doorOpen:
+                                if (doorUnlocked)
+                                {
+                                    gc.openDoor();
+                                    insertInput(doorOpenGood);
+                                }
+                                else
+                                {
+                                    insertInput(doorOpenBad);
+                                }
+                                break;
+                            case doorClose:
+                                gc.openDoor(false);
+                                insertInput(doorClosed);
+                                break;
+                        }
                     }
-                    break;
-                case close:
-                    gc.openDoor(false);
-                    insertInput(doorClosed);
-                    break;
-                case door:
-                    insertInput(doorHelp);
                     break;
                 case overridePad:
                     gc.activateDoorLock();
@@ -360,16 +370,16 @@ public class Terminal : MonoBehaviour
                         case "INFO":
                             
                             break;
-                        case "JOURNAL1":
+                        case "EMAIL":
                             printMode = true;
                             printList.Clear();
-                            insertInput(journal1, true);
+                            insertInput(emailText, true);
                             displayIndex = printList.Count - 1;
                             break;
-                        case "JOURNAL2":
+                        case "JOURNAL1":
 
                             break;
-                        case "JOURNAL3":
+                        case "JOURNAL2":
 
                             break;
                     }
